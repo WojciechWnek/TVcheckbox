@@ -15,6 +15,10 @@
     &__content {
         display: flex;
         flex-grow: 5;
+        max-width: 1000px;
         background-color: $content-background;
+        align-items: center;
+        flex-direction: column;
+        padding: 5rem;
     }
 }

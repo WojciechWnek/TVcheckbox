@@ -1,4 +1,4 @@
-import {API_KEY, API_URL} from './config.js'
+import {API_KEY, API_URL, API_IMAGE_PATH} from './config.js'
 
 const REQUEST = API_URL + 'discover/movie?sort_by=popularity.desc&' + API_KEY;
 
@@ -26,19 +26,49 @@ const getMovie = async function(url){
         score: data.vote_average,
         date: data.release_date,
         homepage: data.homepage,
-        genres: data.genres
+        genres: data.genres,
+        image: data.poster_path
     }
 
     
-    console.log(data);
+    // console.log(data);
+    // console.log(movieData.title);
+    return`
+        <img class="content__poster" src="${API_IMAGE_PATH}${movieData.image}" alt="${movieData.title}">
+
+        <h1 class="content__title">${movieData.title}</h1>
+        <p class="content__overview">
+            ${movieData.overview}
+        </p>
+    `
 }
 
 
-const renderContent = await function(){
+const renderContent =  function(){
+    // getMovie(test)
+    // console.log(API_IMAGE_PATH, movieData.image);
+    // console.log(movieData);
+
+    return`
+        <img class="content__poster" src="${API_IMAGE_PATH}${movieData.image}" alt="${movieData.title}">
+
+        <h1 class="content__title">${movieData.title}</h1>
+        <p class="content__overview">
+            ${movieData.overview}
+        </p>
+    `
 
 }
+
+
 
 getMovie(test)
+const content = document.querySelector('.info__content');
+// content.innerHTML = `<img src="${API_IMAGE_PATH}${movieData.image}">`
+
+
+content.insertAdjacentHTML('afterbegin',await getMovie(test))
+// getMovie(REQUEST)
 
 // const getJSON = async function(url){
 
