@@ -5,41 +5,118 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TV checkbox</title>
+    <link rel="shortcut icon"  type="image/x-icon" href="assets/img/myfavicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mina&display=swap" rel="stylesheet">
-    <style>
-        body{
-            height: 100vh;
-            margin: 0;
-            font-family: 'Mina', sans-serif;
-            background: rgb(144,206,161);
-            background: linear-gradient(106deg, rgba(144,206,161,1) 0%, rgba(1,180,228,1) 100%);
-            display: grid; 
-            place-items: center;
-        }
-        div{
-            display: grid; 
-            place-items: center;
-        }
-        b{
-            text-align: center;
-            justify-self: center;          
-            color: #0d253f;
-            font-size: 64px;
-        }
-        a{
-            outline: none;
-            text-decoration: none;
-            color: #0d253f;
-        }
-    </style>
+    <link rel="stylesheet" href="assets/styles/style.css">
+    <script type="module" defer src="assets/js/script.js"></script>
 </head>
 <body>
-    <div>
-        <b>Here will be created an application that uses</b>
-        <br>
-        <b><a href='https://www.themoviedb.org/'>THE MOVIE DB</a></b> 
-    </div>
+    <!-- <main class='container'> -->
+        <header class="header">
+            <img class="header__logo" src="assets/img/logo.svg" alt="TVcheckbox logo">
+            <form class="search">
+                <input
+                    type="text"
+                    class="search__field"
+                    placeholder="Search for a show"
+                />
+                <button class="btn search__btn">
+                    <img class="search__icon" src="assets/img/search.svg" alt="TVcheckbox logo">
+                    Search
+                </button>
+            </form>
+    
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <button class="nav__btn nav__btn--to_watch">
+                            <!-- <span>To watch</span> -->
+                            <img class="nav__icon" src="assets/img/to_watch.svg" alt="Movies to watch">
+                        </button>
+                        <!-- <div class="bookmarks">
+                            <ul class="bookmarks__list">
+                                <div class="message">
+                                    <div>
+                                    <svg>
+                                        <use href="src/img/icons.svg#icon-smile"></use>
+                                    </svg>
+                                    </div>
+                                    <p>
+                                    No bookmarks yet. Find a nice recipe and bookmark it :)
+                                    </p>
+                                </div>
+                            </ul>
+                        </div> -->
+                    </li>
+                    <li class="nav__item">
+                        <button class="nav__btn nav__btn--watching">
+                            <!-- <span>Watching</span> -->
+                            <img class="nav__icon" src="assets/img/watching.svg" alt="Currently watching">
+                        </button>
+                        <!-- <div class="bookmarks">
+                            <ul class="bookmarks__list">
+                                <div class="message">
+                                    <div>
+                                    <svg>
+                                        <use href="src/img/icons.svg#icon-smile"></use>
+                                    </svg>
+                                    </div>
+                                    <p>
+                                    No bookmarks yet. Find a nice recipe and bookmark it :)
+                                    </p>
+                                </div>
+                            </ul>
+                        </div> -->
+                    </li>
+                    <li class="nav__item">
+                        <button class="nav__btn nav__btn--watched">
+                            <!-- <span>Watched</span> -->
+                            <img class="nav__icon" src="assets/img/watched.svg" alt="Watched shows">
+                        </button>
+                        <!-- <div class="bookmarks">
+                            <ul class="bookmarks__list">
+                                <div class="message">
+                                    <div>
+                                    <svg>
+                                        <use href="src/img/icons.svg#icon-smile"></use>
+                                    </svg>
+                                    </div>
+                                    <p>
+                                    No bookmarks yet. Find a nice recipe and bookmark it :)
+                                    </p>
+                                </div>
+                            </ul>
+                        </div> -->
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="info">
+            <div class="info__results">
+                <!-- <div class="message">
+                <div>
+                    <svg>
+                        <use href="src/img/icons.svg#icon-smile"></use>
+                    </svg>
+                </div>
+                <p>Start by searching for a recipe or an ingredient. Have fun!</p>
+            </div> -->
+            </div>
+            <div class="info__content">
+                <!-- <div class="message">
+                <div>
+                    <svg>
+                        <use href="src/img/icons.svg#icon-smile"></use>
+                    </svg>
+                </div>
+                <p>Start by searching for a recipe or an ingredient. Have fun!</p>
+            </div> -->
+            </div>
+        </section>
+ 
+    <!-- </main> -->
 </body>
 </html>

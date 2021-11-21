@@ -1,0 +1,43 @@
+// Colors for The Movie DB
+$tmdb-primary-color: #0d253f;
+$tmdb-secondary-color: #01b4e4;
+$tmdb-tertiary-color: #90cea1;
+// Website colors
+$header-background: #a5a58d;
+$results-background: #6b705c;
+$content-background: #ffe8d6;
+$text-color: #000;
+$shadow-color: #b7b7a4;
+$btn-color: #cb997e;
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    margin: 0;
+    font-family: "Mina", sans-serif;
+    overflow: hidden;
+    // background-color: $body-background;
+}
+
+// .container {
+//     background-color: $container-background;
+//     min-width: 1320px;
+//     min-height: 100vh;
+//     margin: 4vw auto;
+//     border-radius: 9px;
+//     overflow: hidden;
+//     box-shadow: 0 2rem 6rem 0.5rem rgba($shadow-color, 0.2);
+// }
