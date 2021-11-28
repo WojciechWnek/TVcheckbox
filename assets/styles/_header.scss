@@ -1,13 +1,15 @@
 .header {
+    grid-row: 1;
+    grid-column: 1/-1;
     display: flex;
     justify-content: space-around;
     align-items: center;
     padding: 1.5rem 0;
-    background-color: $header-background;
+    // background-color: $header-background;
     width: 100%;
 
     &__logo {
-        height: 2.5rem;
+        height: 3.2rem;
         display: block;
 
         &:hover {
@@ -29,7 +31,7 @@
     &:focus-within {
         transition: 0.1s;
         transform: translateY(-1px);
-        box-shadow: 0 0.7rem 3rem rgba($shadow-color, 0.2);
+        box-shadow: 0 0.3rem 0.3rem rgba($platinum, 0.2);
     }
 
     &__field {
@@ -43,15 +45,17 @@
     }
 
     &__btn {
+        box-sizing: content-box;
         display: flex;
         align-items: center;
-        background-color: $btn-color;
+        background-color: $orange;
         text-transform: uppercase;
         border: none;
         border-radius: 1.5rem;
         cursor: pointer;
         height: 2rem;
         padding: 0.5rem 2rem;
+        color: $white;
 
         &:hover {
             transition: 0.1s;
@@ -83,16 +87,14 @@
     &__btn {
         display: flex;
         align-items: center;
-        background-color: $header-background;
         border: none;
         cursor: pointer;
         margin: 0 1rem;
+        background: none;
 
         &:hover {
             transition: 0.1s;
             transform: scale(1.1);
-
-            color: #3fbd46;
         }
     }
 }

@@ -63,7 +63,7 @@ const renderContent =  function(){
 
 
 getMovie(test)
-const content = document.querySelector('.info__content');
+const content = document.querySelector('.content');
 // content.innerHTML = `<img src="${API_IMAGE_PATH}${movieData.image}">`
 
 

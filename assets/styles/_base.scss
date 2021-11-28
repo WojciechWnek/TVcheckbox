@@ -2,13 +2,13 @@
 $tmdb-primary-color: #0d253f;
 $tmdb-secondary-color: #01b4e4;
 $tmdb-tertiary-color: #90cea1;
+
 // Website colors
-$header-background: #a5a58d;
-$results-background: #6b705c;
-$content-background: #ffe8d6;
-$text-color: #000;
-$shadow-color: #b7b7a4;
-$btn-color: #cb997e;
+$black: #0a0a0a;
+$dakr_blue: #14213d;
+$white: #ffffff;
+$platinum: #e5e5e5;
+$orange: #fca311;
 
 * {
     margin: 0;
@@ -21,23 +21,29 @@ $btn-color: #cb997e;
     box-sizing: inherit;
 }
 
+html {
+    box-sizing: border-box;
+}
+
 body {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    height: 100%;
+
     margin: 0;
     font-family: "Mina", sans-serif;
-    overflow: hidden;
-    // background-color: $body-background;
+    background-color: $black;
 }
 
-// .container {
-//     background-color: $container-background;
-//     min-width: 1320px;
-//     min-height: 100vh;
-//     margin: 4vw auto;
-//     border-radius: 9px;
-//     overflow: hidden;
-//     box-shadow: 0 2rem 6rem 0.5rem rgba($shadow-color, 0.2);
-// }
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 100px 1fr;
+
+    background-color: $dakr_blue;
+    margin: 4vw auto;
+    border-radius: 9px;
+    overflow: hidden;
+
+    width: 1200px;
+}
