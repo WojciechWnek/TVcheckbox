@@ -10,4 +10,4 @@
 3. As a user I want to hava a bookmark for each of hereinbefor states.
 4. As a user I want to have an icon of state next to searched results.
 5. As a user I want to hava a counter of time spent watching movies/TV series.
-6. As a user I want to sore my data in the browser without logging in.
+6. As a user I want to store my data in the browser without logging in.

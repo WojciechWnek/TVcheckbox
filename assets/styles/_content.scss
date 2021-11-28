@@ -7,10 +7,14 @@
     flex-direction: column;
 
     color: $white;
+
+    .message {
+        padding-top: 4rem;
+    }
+
     &__poster {
         // width: 100%;
         width: 300px;
-        background-color: lightcoral;
     }
 
     &__title {
