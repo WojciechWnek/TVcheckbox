@@ -5,7 +5,7 @@ $tmdb-tertiary-color: #90cea1;
 
 // Website colors
 $black: #0a0a0a;
-$dakr_blue: #14213d;
+$dark_blue: #14213d;
 $white: #ffffff;
 $platinum: #e5e5e5;
 $orange: #fca311;
@@ -40,7 +40,7 @@ body {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 100px 1fr;
 
-    background-color: $dakr_blue;
+    background-color: $dark_blue;
     margin: 4vw auto;
     border-radius: 9px;
     overflow: hidden;
