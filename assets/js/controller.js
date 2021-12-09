@@ -2,6 +2,7 @@ import * as model from "./model.js";
 import showContentView from "./showContentView.js";
 import searchView from "./searchView.js";
 import resultsView from "./resultsView.js";
+import paginationView from "./paginationView.js";
 
 const controlShowContent = async function () {
     try {
@@ -30,16 +31,25 @@ const controlSearchResults = async function () {
         if (!query) return;
 
         await model.loadSearchResults(query);
-        console.log(model.state.search.results);
+        // console.log(model.state.search.results);
 
-        resultsView.render(model.state.search.results);
+        // resultsView.render(model.state.search.results);
+        resultsView.render(model.getSearchResultsPage());
+
+        paginationView.render(model.state.search);
     } catch (err) {
         console.log(err);
     }
 };
 
+const controlPagination = function (goToPage) {
+    resultsView.render(model.getSearchResultsPage(goToPage));
+    paginationView.render(model.state.search);
+};
+
 const init = function () {
     showContentView.addHandlerRender(controlShowContent);
     searchView.addHandlerSearch(controlSearchResults);
+    paginationView.addHandlerClick(controlPagination);
 };
 init();

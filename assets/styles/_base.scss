@@ -47,5 +47,6 @@ body {
     box-shadow: 0 0.5rem 10rem 0.5rem rgba($platinum, 0.2);
 
     width: 1200px;
-    height: 1000px;
+    height: fit-content;
+    min-height: 1000px;
 }
