@@ -7,18 +7,26 @@ class ResultsView extends View {
     _messagr = "";
 
     _generateMarkup() {
-        console.log(this._data);
+        // console.log(this._data);
         return this._data.map(this._generateMarkupPreview).join("");
     }
 
     _generateMarkupPreview(res) {
+        const id = +window.location.hash.slice(1);
+
         return `
-        <li class="preview">
+        <li class="preview ${res.id === id ? "preview--selected" : ""}">
             <a class="preview__link" href="#${res.id}">
                 <figure class="preview__fig">
                     <img
                         class="preview__icon"
-                        src="${API_IMAGE_PATH}${res.image}"
+                        src="${
+                            res.image
+                                ? API_IMAGE_PATH + res.image
+                                : res.mediaType === "person"
+                                ? "assets/img/blank_profile.svg"
+                                : "assets/img/blank_poster.svg"
+                        }"
                         alt="${res.title}"
                     />
                 </figure>

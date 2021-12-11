@@ -6,8 +6,13 @@ export const state = {
     search: {
         query: "",
         results: [],
-        resultsPerPage: RES_PER_PAGE,
         page: 1,
+        resultsPerPage: RES_PER_PAGE,
+    },
+    bookmarks: {
+        toWatch: [],
+        watching: [],
+        watched: [],
     },
 };
 
@@ -41,23 +46,36 @@ export const loadSearchResults = async function (query) {
             `${API_URL}search/multi?${API_KEY}&query=${query}`
         );
         // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1MI
-        console.log(data);
-        console.log(`${API_URL}search/multi?${API_KEY}&query=${query}`);
 
-        state.search.results = data.results.map((show) => {
-            return {
-                id: show.id,
-                adult: show.adult,
-                title: show.original_title,
-                overview: show.overview,
-                mediaType: show.media_type,
-                score: show.vote_average,
-                date: show.release_date,
-                popularity: show.popularity,
-                image: show.poster_path,
-            };
-        });
-        // console.log(state.search.results);
+        state.search.results = [];
+        state.search.page = 1;
+
+        for (let page = 1; page <= data.total_pages; page++) {
+            const dataNext = await getJSON(
+                `${API_URL}search/multi?${API_KEY}&query=${query}&page=${page}`
+            );
+
+            state.search.results.push(
+                ...dataNext.results.map((show) => {
+                    return {
+                        id: show.id,
+                        adult: show.adult,
+                        title:
+                            show.original_title ||
+                            show.title ||
+                            show.name ||
+                            show.origina_name,
+                        overview: show.overview,
+                        mediaType: show.media_type,
+                        score: show.vote_average,
+                        date: show.release_date,
+                        popularity: show.popularity,
+                        image: show.poster_path || show.profile_path,
+                    };
+                })
+            );
+        }
+        console.log(state.search.results);
     } catch (err) {
         throw err;
     }

@@ -11,6 +11,9 @@ const controlShowContent = async function () {
         if (!id) return;
         showContentView.renderSpinner();
 
+        //0 update results view to matk selected show
+        resultsView.update(model.getSearchResultsPage());
+
         //1 load data
         await model.loadShow(id);
         const show = model.state.show;
