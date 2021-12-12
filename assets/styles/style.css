@@ -450,4 +450,61 @@ body {
   height: 3rem;
   margin-right: 1rem;
 }
+
+.content .profile {
+  padding: 50px;
+  height: 100%;
+  width: 100%;
+}
+
+.content .profile__heading {
+  padding-bottom: 1rem;
+  text-align: center;
+}
+
+.content .profile__time {
+  padding-bottom: 1rem;
+  text-align: center;
+}
+
+.content .profile__shows {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: (min-content)[3];
+      grid-template-rows: repeat(3, -webkit-min-content);
+      grid-template-rows: repeat(3, min-content);
+}
+
+.content .profile__shows .status {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.content .profile__shows .status__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.content .profile__shows .status__list .show {
+  width: 100px;
+  height: 150px;
+  list-style: none;
+}
+
+.content .profile__shows .status__list .show__image {
+  width: 100%;
+  height: 100%;
+}
 /*# sourceMappingURL=style.css.map */

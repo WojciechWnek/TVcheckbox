@@ -31,9 +31,12 @@ export const loadShow = async function (id) {
             genres: data.genres,
             image: data.poster_path,
         };
-        // console.log(data);
-        // console.log(state.show);
-        // console.log(res);
+
+        if (state.bookmarks.toWatch.some((bookmark) => bookmark.id === +id)) {
+            state.show.bookmarked = "toWatch";
+        } else {
+            state.show.bookmarked = "";
+        }
     } catch (err) {
         throw err;
     }
@@ -75,7 +78,6 @@ export const loadSearchResults = async function (query) {
                 })
             );
         }
-        console.log(state.search.results);
     } catch (err) {
         throw err;
     }
@@ -89,3 +91,35 @@ export const getSearchResultsPage = function (page = state.search.page) {
 
     return state.search.results.slice(start, end);
 };
+
+const persistBookmarks = function () {
+    localStorage.setItem("bookmarks", JSON.stringify(state.bookmarks));
+};
+
+export const addBookmark = function (show) {
+    //add bookmark
+    state.bookmarks.toWatch.push(show);
+
+    //mark current show as bookmarked
+    if (show.id === state.show.id) state.show.bookmarked = "toWatch";
+    persistBookmarks();
+};
+
+export const deleteBookmark = function (id) {
+    //Delete bookmark
+    const index = state.bookmarks.toWatch.findIndex((el) => el.id === +id);
+    state.bookmarks.toWatch.splice(index, 1);
+
+    //mark current show as NOT bookmarked
+    if (id === state.show.id) state.show.bookmarked = "";
+    persistBookmarks();
+};
+
+const init = function () {
+    const storage = localStorage.getItem("bookmarks");
+    if (storage) state.bookmarks = JSON.parse(storage);
+};
+
+init();
+
+// localStorage.clear("bookmarks");

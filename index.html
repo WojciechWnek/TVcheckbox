@@ -22,11 +22,14 @@
     <body>
         <div class="container">
             <header class="header">
-                <img
-                    class="header__logo"
-                    src="assets/img/full_logo_white.svg"
-                    alt="TVcheckbox logo"
-                />
+                <a href="http://127.0.0.1:5500/">
+                    <img
+                        class="header__logo"
+                        src="assets/img/full_logo_white.svg"
+                        alt="TVcheckbox logo"
+                    />
+                </a>
+
                 <form class="search">
                     <input
                         type="text"
@@ -46,76 +49,15 @@
                 <nav class="nav">
                     <ul class="nav__list">
                         <li class="nav__item">
-                            <button class="nav__btn nav__btn--to_watch">
-                                <!-- <span>To watch</span> -->
-                                <img
-                                    class="nav__icon"
-                                    src="assets/img/pending.svg"
-                                    alt="Movies to watch"
-                                />
-                            </button>
-                            <!-- <div class="bookmarks">
-                            <ul class="bookmarks__list">
-                                <div class="message">
-                                    <div>
-                                    <svg>
-                                        <use href="src/img/icons.svg#icon-smile"></use>
-                                    </svg>
-                                    </div>
-                                    <p>
-                                    No bookmarks yet. Find a nice recipe and bookmark it :)
-                                    </p>
-                                </div>
-                            </ul>
-                        </div> -->
-                        </li>
-                        <li class="nav__item">
-                            <button class="nav__btn nav__btn--watching">
-                                <!-- <span>Watching</span> -->
-                                <img
-                                    class="nav__icon"
-                                    src="assets/img/in_progress.svg"
-                                    alt="Currently watching"
-                                />
-                            </button>
-                            <!-- <div class="bookmarks">
-                            <ul class="bookmarks__list">
-                                <div class="message">
-                                    <div>
-                                    <svg>
-                                        <use href="src/img/icons.svg#icon-smile"></use>
-                                    </svg>
-                                    </div>
-                                    <p>
-                                    No bookmarks yet. Find a nice recipe and bookmark it :)
-                                    </p>
-                                </div>
-                            </ul>
-                        </div> -->
-                        </li>
-                        <li class="nav__item">
-                            <button class="nav__btn nav__btn--watched">
-                                <!-- <span>Watched</span> -->
-                                <img
-                                    class="nav__icon"
-                                    src="assets/img/check.svg"
-                                    alt="Watched shows"
-                                />
-                            </button>
-                            <!-- <div class="bookmarks">
-                            <ul class="bookmarks__list">
-                                <div class="message">
-                                    <div>
-                                    <svg>
-                                        <use href="src/img/icons.svg#icon-smile"></use>
-                                    </svg>
-                                    </div>
-                                    <p>
-                                    No bookmarks yet. Find a nice recipe and bookmark it :)
-                                    </p>
-                                </div>
-                            </ul>
-                        </div> -->
+                            <a href="#profile">
+                                <button class="nav__btn">
+                                    <img
+                                        class="nav__icon"
+                                        src="assets/img/profile.svg"
+                                        alt="Go to user's profile"
+                                    />
+                                </button>
+                            </a>
                         </li>
                     </ul>
                 </nav>
@@ -123,25 +65,7 @@
 
             <div class="results">
                 <ul class="results__list"></ul>
-
-                <!-- <div class="message">
-                    <div>
-                        <svg>
-                            <use href="src/img/icons.svg#icon-smile"></use>
-                        </svg>
-                    </div>
-                    <p>Start by searching for a recipe or an ingredient. Have fun!</p>
-                </div> -->
-                <div class="pagination">
-                    <!-- <button class="btn--inline pagination__btn--prev">
-                        <span>&#10094 </span>
-                        <span>Page 1</span>
-                    </button>
-                    <button class="btn--inline pagination__btn--next">
-                        <span>Page 3</span>
-                        <span>&#10095</span>
-                    </button> -->
-                </div>
+                <div class="pagination"></div>
             </div>
             <div class="content">
                 <div class="message">
