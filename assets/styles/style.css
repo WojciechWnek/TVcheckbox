@@ -155,6 +155,7 @@ body {
 
 .nav__icon {
   height: 2.3rem;
+  width: 2.3rem;
 }
 
 .nav__btn {
@@ -336,21 +337,24 @@ body {
 
 .content {
   grid-column: 2/-1;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 300px auto 200px;
+      grid-template-columns: 300px auto 200px;
+  -ms-grid-rows: 150px auto;
+      grid-template-rows: 150px auto;
   color: #ffffff;
 }
 
 .content .message {
   padding-top: 4rem;
+  text-align: center;
+  grid-column: -1/1;
+}
+
+.content .error {
+  padding-top: 4rem;
+  grid-column: -1/1;
 }
 
 .content__poster {
@@ -364,9 +368,24 @@ body {
 }
 
 .content__overview {
+  -ms-grid-row: 2;
+  grid-row: 2;
+  grid-column: 2/-1;
   text-align: justify;
   color: #ffffff;
   padding: 1rem;
+}
+
+.content__bookmarks .btn--bookmark {
+  border: none;
+  width: 50px;
+  height: 50px;
+  background-color: #14213d;
+}
+
+.content__bookmarks .btn--bookmark img {
+  width: 100%;
+  height: 100%;
 }
 
 .spinner {

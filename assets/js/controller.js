@@ -22,6 +22,7 @@ const controlShowContent = async function () {
         //2 render data
 
         showContentView.render(model.state.show);
+        // console.log(model.state);
     } catch (err) {
         showContentView.renderError(`${err}`);
     }
@@ -33,8 +34,8 @@ const controlSearchResults = async function () {
 
         const query = searchView.getQuery();
         if (!query) return;
-
-        await model.loadSearchResults(query);
+        // ////////////////////////////////  added V
+        await model.loadSearchResults(query, model.state);
         // console.log(model.state.search.results);
 
         // resultsView.render(model.state.search.results);
@@ -55,7 +56,7 @@ const controlProfile = function () {
     try {
         const id = window.location.hash.slice(1);
 
-        console.log("controller", model.state.bookmarks);
+        // console.log("controller", model.state.bookmarks);
 
         if (!id) return;
         profileView.renderSpinner();
@@ -70,11 +71,12 @@ const controlProfile = function () {
     }
 };
 
-const controlAddBookmark = function () {
-    if (!model.state.show.bookmarked) {
-        model.addBookmark(model.state.show);
+const controlAddBookmark = function (bookmarkStatus) {
+    if (model.state.show.bookmarked !== bookmarkStatus) {
+        model.deleteBookmark(model.state.show.composite_id, bookmarkStatus);
+        model.addBookmark(model.state.show, bookmarkStatus);
     } else {
-        model.deleteBookmark(model.state.show.id);
+        model.deleteBookmark(model.state.show.composite_id, bookmarkStatus);
     }
 
     showContentView.update(model.state.show);
@@ -88,3 +90,15 @@ const init = function () {
     paginationView.addHandlerClick(controlPagination);
 };
 init();
+
+// const cl = function () {
+//     const { toWatch, watching, watched } = model.state.bookmarks;
+//     const states = [...toWatch, ...watching, ...watched];
+//     console.log("towatch:", toWatch);
+//     console.log("watching:", watching);
+//     console.log("watched:", watched);
+//     console.log("all", ...toWatch, ...watching, ...watched);
+//     console.log("obj", model.state.bookmarks);
+//     console.log("states", states);
+// };
+// cl();

@@ -13,7 +13,7 @@ class ProfileView extends View {
     }
 
     _generateMarkup() {
-        console.log(this._data);
+        // console.log(this._data);
 
         return `
             <div class="profile">
@@ -22,38 +22,52 @@ class ProfileView extends View {
                     <p>Aprox time spent watching</p>
                 </div>
                 <div class="profile__shows">
-                    <div class="status">
-                        <h4>To watch</h4>
-                        <ul class="status__list">
-                            ${this._data.toWatch
-                                .map(this._generateMarkupProfile)
-                                .join("")}
-                        </ul>
-                    </div>
-                    <div class="status">
-                        <h4>Watching</h4>
-                        <ul class="status__list">
-                            ${this._data.toWatch
-                                .map(this._generateMarkupProfile)
-                                .join("")}
-                        </ul>
-                    </div>
-                    <div class="status">
-                        <h4>Watched</h4>
-                        <ul class="status__list">
-                            ${this._data.toWatch
-                                .map(this._generateMarkupProfile)
-                                .join("")}
-                        </ul>
-                    </div>
-                    
+                    ${
+                        this._data.toWatch.length > 0
+                            ? `
+                                <div class="status">
+                                    <h4>To watch</h4>
+                                    <ul class="status__list">
+                                        ${this._data.toWatch
+                                            .map(this._generateMarkupProfile)
+                                            .join("")}
+                                    </ul>
+                                </div>`
+                            : ""
+                    }
+                    ${
+                        this._data.watching.length > 0
+                            ? `
+                                <div class="status">
+                                    <h4>Watching</h4>
+                                    <ul class="status__list">
+                                        ${this._data.watching
+                                            .map(this._generateMarkupProfile)
+                                            .join("")}
+                                    </ul>
+                                </div>`
+                            : ""
+                    }
+                    ${
+                        this._data.watched.length > 0
+                            ? `
+                                <div class="status">
+                                    <h4>Watched</h4>
+                                    <ul class="status__list">
+                                        ${this._data.watched
+                                            .map(this._generateMarkupProfile)
+                                            .join("")}
+                                    </ul>
+                                </div>`
+                            : ""
+                    }                   
                 </div>
             </div>
         `;
     }
 
     _generateMarkupProfile(res) {
-        console.log("profile", res);
+        // console.log("profile", res);
 
         return `  
             <li class="show">

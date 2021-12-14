@@ -16,69 +16,65 @@ export const state = {
     },
 };
 
-export const loadShow = async function (id) {
+/**
+ * Featching data from the webAPI
+ * @param {string} path String containing media type and its id
+ */
+export const loadShow = async function (path) {
     try {
-        const data = await getJSON(`${API_URL}movie/${id}?${API_KEY}`);
+        const data = await getJSON(`${API_URL}${path}?${API_KEY}`);
 
         state.show = {
-            id: data.id,
-            title: data.original_title,
-            overview: data.overview,
-            runtime: data.runtime,
-            score: data.vote_average,
-            date: data.release_date,
-            homepage: data.homepage,
-            genres: data.genres,
-            image: data.poster_path,
+            ...data,
+            bookmarked: "",
+            media_type: path.substring(0, path.indexOf("/")),
+            composite_id: path,
         };
 
-        if (state.bookmarks.toWatch.some((bookmark) => bookmark.id === +id)) {
-            state.show.bookmarked = "toWatch";
-        } else {
-            state.show.bookmarked = "";
-        }
+        // console.log(state.show);
+
+        // if (state.bookmarks.toWatch.some((bookmark) => bookmark.id === +id)) {
+        //     state.show.bookmarked = "toWatch";
+        // } else {
+        //     state.show.bookmarked = "";
+        // }
+        console.log(state.search.results[0]);
+        console.log(state.bookmarks);
     } catch (err) {
         throw err;
     }
 };
-
-export const loadSearchResults = async function (query) {
+/////////////////////////////////////////////////  added  V
+export const loadSearchResults = async function (query, state) {
     try {
         state.search.query = query;
         const data = await getJSON(
             `${API_URL}search/multi?${API_KEY}&query=${query}`
         );
-        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1MI
 
         state.search.results = [];
         state.search.page = 1;
 
         for (let page = 1; page <= data.total_pages; page++) {
-            const dataNext = await getJSON(
+            const data = await getJSON(
                 `${API_URL}search/multi?${API_KEY}&query=${query}&page=${page}`
             );
 
             state.search.results.push(
-                ...dataNext.results.map((show) => {
+                ...data.results.map((result) => {
                     return {
-                        id: show.id,
-                        adult: show.adult,
-                        title:
-                            show.original_title ||
-                            show.title ||
-                            show.name ||
-                            show.origina_name,
-                        overview: show.overview,
-                        mediaType: show.media_type,
-                        score: show.vote_average,
-                        date: show.release_date,
-                        popularity: show.popularity,
-                        image: show.poster_path || show.profile_path,
+                        ...result,
+                        composite_id: result.media_type + "/" + result.id,
+                        //////////////////////////// pokombinować z bookmarks{}
+                        // bookmarked: state.show.bookmarked,
                     };
                 })
             );
         }
+        console.log(state.search.results[0]);
+        console.log(state.bookmarks);
     } catch (err) {
+        console.log(err);
         throw err;
     }
 };
@@ -96,22 +92,55 @@ const persistBookmarks = function () {
     localStorage.setItem("bookmarks", JSON.stringify(state.bookmarks));
 };
 
-export const addBookmark = function (show) {
+export const addBookmark = function (show, bookmarkStatus) {
     //add bookmark
-    state.bookmarks.toWatch.push(show);
-
-    //mark current show as bookmarked
-    if (show.id === state.show.id) state.show.bookmarked = "toWatch";
+    if (bookmarkStatus === "toWatch") {
+        state.bookmarks.toWatch.push(show);
+        if (show.composite_id === state.show.composite_id)
+            state.show.bookmarked = bookmarkStatus;
+    }
+    if (bookmarkStatus === "watching") {
+        state.bookmarks.watching.push(show);
+        if (show.composite_id === state.show.composite_id)
+            state.show.bookmarked = bookmarkStatus;
+    }
+    if (bookmarkStatus === "watched") {
+        state.bookmarks.watched.push(show);
+        if (show.composite_id === state.show.composite_id)
+            state.show.bookmarked = bookmarkStatus;
+    }
     persistBookmarks();
 };
 
-export const deleteBookmark = function (id) {
+export const deleteBookmark = function (composite_id, bookmarkStatus) {
     //Delete bookmark
-    const index = state.bookmarks.toWatch.findIndex((el) => el.id === +id);
-    state.bookmarks.toWatch.splice(index, 1);
+    // console.log(composite_id, bookmarkStatus);
+    console.log(state.show);
+
+    // /////////////////////////////////
+    // console.log(state.bookmarks);
+    for (const arr in state.bookmarks) {
+        // console.log(state.bookmarks[arr]);
+        const index = state.bookmarks[arr].findIndex(
+            (el) => el.composite_id === composite_id
+        );
+        console.log("Przed ucięciem", state.bookmarks[arr]);
+
+        state.bookmarks[arr].splice(index, 1);
+        console.log("Po ucięciu", state.bookmarks[arr]);
+    }
+    console.log(state.show);
+
+    // let index;
+    // index = state.bookmarks.toWatch.findIndex((el) => el.id === +id);
+    // state.bookmarks.toWatch.splice(index, 1);
+    // index = state.bookmarks.watching.findIndex((el) => el.id === +id);
+    // state.bookmarks.watching.splice(index, 1);
+    // index = state.bookmarks.watched.findIndex((el) => el.id === +id);
+    // state.bookmarks.watched.splice(index, 1);
 
     //mark current show as NOT bookmarked
-    if (id === state.show.id) state.show.bookmarked = "";
+    if (composite_id === state.show.composite_id) state.show.bookmarked = "";
     persistBookmarks();
 };
 

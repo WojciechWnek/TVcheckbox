@@ -5,6 +5,7 @@ class ShowContentView extends View {
     _parentElement = document.querySelector(".content");
 
     addHandlerRender(handler) {
+        //hashchange neds to be changed to click like in paginationView
         ["hashchange", "load"].forEach((event) =>
             window.addEventListener(event, handler)
         );
@@ -12,9 +13,13 @@ class ShowContentView extends View {
 
     addHandlerAddBookmark(handler) {
         this._parentElement.addEventListener("click", function (e) {
-            const btn = e.target.closest(".btn--toWatch");
+            const btn = e.target.closest(".btn--bookmark");
             if (!btn) return;
-            handler();
+
+            const bookmarkStatus = btn.dataset.bookmark;
+            // console.log(bookmarkStatus);
+
+            handler(bookmarkStatus);
         });
     }
 
@@ -24,15 +29,33 @@ class ShowContentView extends View {
             this._data.image
         }" alt="${this._data.title}">
 
-        <button class="btn--toWatch">
-            <img width="100px" height="100px" src=assets/img/${
-                this._data.bookmarked === "toWatch"
-                    ? "bookmark-solid.svg"
-                    : "bookmark-regular.svg"
-            } alt="bookmark">
-        </button>
-
         <h1 class="content__title">${this._data.title}</h1>
+
+        <div class="content__bookmarks">
+
+            <button class="btn--bookmark" data-bookmark="toWatch">
+                <img src=assets/img/${
+                    this._data.bookmarked === "toWatch"
+                        ? "pending--marked.svg"
+                        : "pending.svg"
+                } alt="bookmark">
+            </button>
+            <button class="btn--bookmark" data-bookmark="watching">
+                <img src=assets/img/${
+                    this._data.bookmarked === "watching"
+                        ? "in_progress--marked.svg"
+                        : "in_progress.svg"
+                } alt="bookmark">
+            </button>
+            <button class="btn--bookmark" data-bookmark="watched">
+                <img src=assets/img/${
+                    this._data.bookmarked === "watched"
+                        ? "check--marked.svg"
+                        : "check.svg"
+                } alt="bookmark">
+            </button>
+        </div>
+            
         <p class="content__overview">
             ${this._data.overview}
         </p>

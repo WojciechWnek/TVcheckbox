@@ -15,7 +15,7 @@ class ResultsView extends View {
 
         return `
         <li class="preview ${res.id === id ? "preview--selected" : ""}">
-            <a class="preview__link" href="#${res.id}">
+            <a class="preview__link" href="#${res.media_type}/${res.id}">
                 <figure class="preview__fig">
                     <img
                         class="preview__icon"
