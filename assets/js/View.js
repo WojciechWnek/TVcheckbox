@@ -13,8 +13,10 @@ export default class View {
 
     update(data) {
         this._data = data;
-        const newMarkup = this._generateMarkup();
 
+        console.log("update START: ", this._data);
+
+        const newMarkup = this._generateMarkup();
         const newDOM = document
             .createRange()
             .createContextualFragment(newMarkup);
@@ -40,6 +42,8 @@ export default class View {
                 );
             }
         });
+
+        console.log("update END: ", this._data);
     }
 
     _clear() {

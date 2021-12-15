@@ -7,16 +7,16 @@ import profileView from "./profileView.js";
 
 const controlShowContent = async function () {
     try {
-        const id = window.location.hash.slice(1);
+        const composite_id = window.location.hash.slice(1);
 
-        if (!id || id === "profile") return;
+        if (!composite_id || composite_id === "profile") return;
         showContentView.renderSpinner();
 
         //0 update results view to matk selected show
         resultsView.update(model.getSearchResultsPage());
 
         //1 load data
-        await model.loadShow(id);
+        await model.loadShow(composite_id);
         // const show = model.state.show;
 
         //2 render data
@@ -73,6 +73,7 @@ const controlProfile = function () {
 
 const controlAddBookmark = function (bookmarkStatus) {
     if (model.state.show.bookmarked !== bookmarkStatus) {
+        // console.log(model.state.show.composite_id);
         model.deleteBookmark(model.state.show.composite_id, bookmarkStatus);
         model.addBookmark(model.state.show, bookmarkStatus);
     } else {

@@ -31,15 +31,45 @@ export const loadShow = async function (path) {
             composite_id: path,
         };
 
-        // console.log(state.show);
+        // console.log("here 1");
+        // let i = 0;
+        for (const arr in state.bookmarks) {
+            // i++;
+            // console.log(
+            //     state.bookmarks.i,
+            //     state.bookmarks[arr].some(
+            //         (bookmark) => bookmark.composite_id === path
+            //     )
+            // );
+
+            // // console.log(state.bookmarks[arr]);
+            // console.log("here for");
+
+            if (
+                state.bookmarks[arr].some(
+                    (bookmark) => bookmark.composite_id === path
+                )
+            ) {
+                // console.log("here if");
+
+                // console.log(arr);
+                state.show.bookmarked = arr;
+                console.log(state.show.bookmarked);
+            } else {
+                // console.log("here else");
+
+                state.show.bookmarked = "";
+            }
+        }
+        // console.log("here n");
 
         // if (state.bookmarks.toWatch.some((bookmark) => bookmark.id === +id)) {
         //     state.show.bookmarked = "toWatch";
         // } else {
         //     state.show.bookmarked = "";
         // }
-        console.log(state.search.results[0]);
-        console.log(state.bookmarks);
+        // console.log(state.search.results[0]);
+        // console.log(state.bookmarks);
     } catch (err) {
         throw err;
     }
@@ -71,8 +101,8 @@ export const loadSearchResults = async function (query, state) {
                 })
             );
         }
-        console.log(state.search.results[0]);
-        console.log(state.bookmarks);
+        // console.log(state.search.results[0]);
+        // console.log(state.bookmarks);
     } catch (err) {
         console.log(err);
         throw err;
@@ -115,7 +145,7 @@ export const addBookmark = function (show, bookmarkStatus) {
 export const deleteBookmark = function (composite_id, bookmarkStatus) {
     //Delete bookmark
     // console.log(composite_id, bookmarkStatus);
-    console.log(state.show);
+    // console.log(state.show);
 
     // /////////////////////////////////
     // console.log(state.bookmarks);
@@ -124,10 +154,11 @@ export const deleteBookmark = function (composite_id, bookmarkStatus) {
         const index = state.bookmarks[arr].findIndex(
             (el) => el.composite_id === composite_id
         );
-        console.log("Przed ucięciem", state.bookmarks[arr]);
+        // console.log(index);
+        // console.log("Przed ucięciem", state.bookmarks[arr]);
 
-        state.bookmarks[arr].splice(index, 1);
-        console.log("Po ucięciu", state.bookmarks[arr]);
+        if (index >= 0) state.bookmarks[arr].splice(index, 1);
+        // console.log("Po ucięciu", state.bookmarks[arr]);
     }
     console.log(state.show);
 

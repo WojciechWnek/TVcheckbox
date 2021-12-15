@@ -24,9 +24,11 @@ class ShowContentView extends View {
     }
 
     _generateMarkup() {
+        console.log("data:", this._data);
+        console.log("bookmarked: ?", this._data.bookmarked);
         return `
         <img class="content__poster" src="${API_IMAGE_PATH}${
-            this._data.image
+            this._data.poster_path
         }" alt="${this._data.title}">
 
         <h1 class="content__title">${this._data.title}</h1>

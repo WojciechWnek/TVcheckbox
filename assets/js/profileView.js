@@ -71,7 +71,7 @@ class ProfileView extends View {
 
         return `  
             <li class="show">
-                <img class="show__image"src="${API_IMAGE_PATH}${res.image}" alt="${res.title}">
+                <img class="show__image"src="${API_IMAGE_PATH}${res.poster_path}" alt="${res.title}">
             </li>
         `;
     }
