@@ -14,8 +14,6 @@ export default class View {
     update(data) {
         this._data = data;
 
-        console.log("update START: ", this._data);
-
         const newMarkup = this._generateMarkup();
         const newDOM = document
             .createRange()
@@ -42,8 +40,6 @@ export default class View {
                 );
             }
         });
-
-        console.log("update END: ", this._data);
     }
 
     _clear() {

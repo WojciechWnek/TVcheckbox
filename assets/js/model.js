@@ -54,7 +54,8 @@ export const loadShow = async function (path) {
 
                 // console.log(arr);
                 state.show.bookmarked = arr;
-                console.log(state.show.bookmarked);
+                // console.log(state.show.bookmarked);
+                break;
             } else {
                 // console.log("here else");
 
@@ -92,11 +93,24 @@ export const loadSearchResults = async function (query, state) {
 
             state.search.results.push(
                 ...data.results.map((result) => {
+                    console.log("TO", result);
+                    for (const arr in state.bookmarks) {
+                        if (
+                            state.bookmarks[arr].some(
+                                (bookmark) =>
+                                    bookmark.composite_id ===
+                                    result.media_type + "/" + result.id
+                            )
+                        ) {
+                            result.bookmarked = arr;
+                            break;
+                        } else {
+                            result.bookmarked = "";
+                        }
+                    }
                     return {
                         ...result,
                         composite_id: result.media_type + "/" + result.id,
-                        //////////////////////////// pokombinować z bookmarks{}
-                        // bookmarked: state.show.bookmarked,
                     };
                 })
             );

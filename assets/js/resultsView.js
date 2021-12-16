@@ -48,7 +48,9 @@ class ResultsView extends View {
             <div>
                 <img
                     class="preview__state"
-                    src="assets/img/empty.svg"
+                    src="assets/img/${
+                        res.bookmarked ? res.bookmarked + "--marked" : "empty"
+                    }.svg"
                     alt="Star"
                 />
             </div>

@@ -24,8 +24,7 @@ class ShowContentView extends View {
     }
 
     _generateMarkup() {
-        console.log("data:", this._data);
-        console.log("bookmarked: ?", this._data.bookmarked);
+        console.log(this._data);
         return `
         <img class="content__poster" src="${API_IMAGE_PATH}${
             this._data.poster_path
@@ -36,25 +35,25 @@ class ShowContentView extends View {
         <div class="content__bookmarks">
 
             <button class="btn--bookmark" data-bookmark="toWatch">
-                <img src=assets/img/${
+                <img src="assets/img/${
                     this._data.bookmarked === "toWatch"
-                        ? "pending--marked.svg"
-                        : "pending.svg"
-                } alt="bookmark">
+                        ? this._data.bookmarked + "--marked"
+                        : "toWatch"
+                }.svg" alt="bookmark">
             </button>
             <button class="btn--bookmark" data-bookmark="watching">
-                <img src=assets/img/${
-                    this._data.bookmarked === "watching"
-                        ? "in_progress--marked.svg"
-                        : "in_progress.svg"
-                } alt="bookmark">
+            <img src="assets/img/${
+                this._data.bookmarked === "watching"
+                    ? this._data.bookmarked + "--marked"
+                    : "watching"
+            }.svg" alt="bookmark">
             </button>
             <button class="btn--bookmark" data-bookmark="watched">
-                <img src=assets/img/${
-                    this._data.bookmarked === "watched"
-                        ? "check--marked.svg"
-                        : "check.svg"
-                } alt="bookmark">
+            <img src="assets/img/${
+                this._data.bookmarked === "watched"
+                    ? this._data.bookmarked + "--marked"
+                    : "watched"
+            }.svg" alt="bookmark">
             </button>
         </div>
             

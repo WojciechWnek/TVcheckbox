@@ -81,6 +81,7 @@ const controlAddBookmark = function (bookmarkStatus) {
     }
 
     showContentView.update(model.state.show);
+    // resultsView.update(model.state.search.results);
 };
 
 const init = function () {
