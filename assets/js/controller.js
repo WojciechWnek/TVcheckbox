@@ -12,7 +12,7 @@ const controlShowContent = async function () {
         if (!composite_id || composite_id === "profile") return;
         showContentView.renderSpinner();
 
-        //0 update results view to matk selected show
+        //0 update results view to mark selected show
         resultsView.update(model.getSearchResultsPage());
 
         //1 load data
@@ -34,22 +34,15 @@ const controlSearchResults = async function () {
 
         const query = searchView.getQuery();
         if (!query) return;
-        // ////////////////////////////////  added V
-        await model.loadSearchResults(query, model.state);
-        // console.log(model.state.search.results);
 
-        // resultsView.render(model.state.search.results);
+        await model.loadSearchResults(query, model.state);
+
         resultsView.render(model.getSearchResultsPage());
 
         paginationView.render(model.state.search);
     } catch (err) {
         showContentView.renderError(`${err}`);
     }
-};
-
-const controlPagination = function (goToPage) {
-    resultsView.render(model.getSearchResultsPage(goToPage));
-    paginationView.render(model.state.search);
 };
 
 const controlProfile = function () {
@@ -71,22 +64,35 @@ const controlProfile = function () {
     }
 };
 
-const controlAddBookmark = function (bookmarkStatus) {
-    if (model.state.show.bookmarked !== bookmarkStatus) {
-        // console.log(model.state.show.composite_id);
-        model.deleteBookmark(model.state.show.composite_id, bookmarkStatus);
-        model.addBookmark(model.state.show, bookmarkStatus);
-    } else {
-        model.deleteBookmark(model.state.show.composite_id, bookmarkStatus);
-    }
+const controlAddBookmark = async function (bookmarkStatus) {
+    try {
+        if (model.state.show.bookmarked !== bookmarkStatus) {
+            model.deleteBookmark(model.state.show.composite_id, bookmarkStatus);
+            model.addBookmark(model.state.show, bookmarkStatus);
+        } else {
+            model.deleteBookmark(model.state.show.composite_id, bookmarkStatus);
+        }
 
-    showContentView.update(model.state.show);
-    // resultsView.update(model.state.search.results);
+        showContentView.update(model.state.show);
+
+        await model.loadSearchResults(model.state.search.query, model.state);
+
+        resultsView.render(model.getSearchResultsPage());
+
+        paginationView.render(model.state.search);
+    } catch (err) {
+        showContentView.renderError(`${err}`);
+    }
+};
+
+const controlPagination = function (goToPage) {
+    resultsView.render(model.getSearchResultsPage(goToPage));
+    paginationView.render(model.state.search);
 };
 
 const init = function () {
     showContentView.addHandlerRender(controlShowContent);
-    profileView.addHandlerRenderProfile(controlProfile);
+    // profileView.addHandlerRenderProfile(controlProfile);
     showContentView.addHandlerAddBookmark(controlAddBookmark);
     searchView.addHandlerSearch(controlSearchResults);
     paginationView.addHandlerClick(controlPagination);

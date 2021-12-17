@@ -12,6 +12,7 @@ class ResultsView extends View {
 
     _generateMarkupPreview(res) {
         const id = +window.location.hash.slice(1);
+        // console.log(res);
 
         return `
         <li class="preview ${res.id === id ? "preview--selected" : ""}">

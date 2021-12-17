@@ -24,7 +24,6 @@ class ShowContentView extends View {
     }
 
     _generateMarkup() {
-        console.log(this._data);
         return `
         <img class="content__poster" src="${API_IMAGE_PATH}${
             this._data.poster_path
