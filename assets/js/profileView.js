@@ -12,6 +12,16 @@ class ProfileView extends View {
         );
     }
 
+    // addHandlerRenderProfile(handler) {
+    //     window.addEventListener("load", handler);
+    //     window.addEventListener("click", function (e) {
+    //         const btn = e.target.closest(".nav__btn");
+    //         if (!btn) return;
+    //         // console.log(handler);
+    //         handler();
+    //     });
+    // }
+
     _generateMarkup() {
         // console.log(this._data);
 

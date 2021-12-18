@@ -49,12 +49,10 @@ const controlProfile = function () {
     try {
         const id = window.location.hash.slice(1);
 
-        // console.log("controller", model.state.bookmarks);
+        if (id !== "profile") return;
 
-        if (!id) return;
         profileView.renderSpinner();
 
-        // transfer this code to model !!!!!!!!!!!!!!!!!!!!!!!!!!!!
         if (!Object.values(model.state.bookmarks).some((arr) => arr.length > 0))
             throw profileView.errorMessage;
 
@@ -92,7 +90,7 @@ const controlPagination = function (goToPage) {
 
 const init = function () {
     showContentView.addHandlerRender(controlShowContent);
-    // profileView.addHandlerRenderProfile(controlProfile);
+    profileView.addHandlerRenderProfile(controlProfile);
     showContentView.addHandlerAddBookmark(controlAddBookmark);
     searchView.addHandlerSearch(controlSearchResults);
     paginationView.addHandlerClick(controlPagination);

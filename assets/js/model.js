@@ -87,7 +87,6 @@ export const loadSearchResults = async function (query, state) {
                 })
             );
         }
-        console.log("loadSearchResults", state.search.results);
     } catch (err) {
         console.log(err);
         throw err;
