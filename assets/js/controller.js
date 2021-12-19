@@ -4,6 +4,7 @@ import searchView from "./searchView.js";
 import resultsView from "./resultsView.js";
 import paginationView from "./paginationView.js";
 import profileView from "./profileView.js";
+import sortView from "./sortView.js";
 
 const controlShowContent = async function () {
     try {
@@ -30,16 +31,26 @@ const controlShowContent = async function () {
 
 const controlSearchResults = async function () {
     try {
-        resultsView.renderSpinner();
+        // resultsView.renderSpinner();
+        // showContentView.render();
 
         const query = searchView.getQuery();
         if (!query) return;
+        resultsView.renderSpinner();
 
         await model.loadSearchResults(query, model.state);
 
         resultsView.render(model.getSearchResultsPage());
 
+        if (model.state.search.results.length === 0) {
+            console.log("no res");
+            return;
+        }
+
+        sortView.render(model.state.search);
+
         paginationView.render(model.state.search);
+        console.log("controlSearchResults: ", model.state.search.results);
     } catch (err) {
         showContentView.renderError(`${err}`);
     }
@@ -83,6 +94,31 @@ const controlAddBookmark = async function (bookmarkStatus) {
     }
 };
 
+// const controlSort = async function (sortBy) {
+//     try {
+//         console.log(1, model.state.search);
+
+//         console.log(2, model.state.search);
+
+//         // console.log(2, model.state.search.results);
+//         //     console.log(1);
+//         //     await model.loadSearchResults(model.state.search.query, model.state);
+//         //     console.log(2);
+//         //     if (model.state.search.results.length === 0) return;
+//         //     console.log(3);
+//         //     sortView.render(model);
+//         //     // await model.loadSearchResults(model.state.search.query, model.state);
+//         //     // resultsView.render(model.getSearchResultsPage());
+//         //     // paginationView.render(model.state.search);
+//         //     // } catch (err) {
+//         //     //     console.log(err);
+//         //     //     // showContentView.renderError(`${err}`);
+//         //     // }
+//     } catch (err) {
+//         showContentView.renderError(`${err}`);
+//     }
+// };
+
 const controlPagination = function (goToPage) {
     resultsView.render(model.getSearchResultsPage(goToPage));
     paginationView.render(model.state.search);
@@ -93,6 +129,7 @@ const init = function () {
     profileView.addHandlerRenderProfile(controlProfile);
     showContentView.addHandlerAddBookmark(controlAddBookmark);
     searchView.addHandlerSearch(controlSearchResults);
+    // sortView.addHandlerRender(controlSort);
     paginationView.addHandlerClick(controlPagination);
 };
 init();

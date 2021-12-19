@@ -5,7 +5,6 @@ class ShowContentView extends View {
     _parentElement = document.querySelector(".content");
 
     addHandlerRender(handler) {
-        //hashchange neds to be changed to click like in paginationView
         ["hashchange", "load"].forEach((event) =>
             window.addEventListener(event, handler)
         );

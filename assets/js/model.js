@@ -8,6 +8,7 @@ export const state = {
         results: [],
         page: 1,
         resultsPerPage: RES_PER_PAGE,
+        sorted: "",
     },
     bookmarks: {
         toWatch: [],
@@ -51,6 +52,7 @@ export const loadShow = async function (path) {
 export const loadSearchResults = async function (query, state) {
     try {
         if (state.search.query !== query) state.search.page = 1;
+        // if (query === "")
 
         state.search.query = query;
         const data = await getJSON(
@@ -87,6 +89,32 @@ export const loadSearchResults = async function (query, state) {
                 })
             );
         }
+        // console.log("Result: ", state.search.results);
+        // sort by popularity descending
+        // state.search.results.sort(
+        //     (showOne, showTwo) => showTwo.popularity - showOne.popularity
+        // );
+
+        //sort by name ascending
+        // state.search.results.sort((showOne, showTwo) => {
+        //     const showOneTitle = showOne.title
+        //         ? showOne.title.toLowerCase()
+        //         : showOne.name.toLowerCase();
+        //     const showTwoTitle = showTwo.title
+        //         ? showTwo.title.toLowerCase()
+        //         : showTwo.name.toLowerCase();
+
+        //     if (showOneTitle < showTwoTitle) return -1;
+        //     if (showOneTitle > showTwoTitle) return 1;
+        //     return 0;
+        // });
+
+        //sort by score descending
+        // state.search.results.sort(
+        //     (showOne, showTwo) => showTwo.vote_average - showOne.vote_average
+        // );
+
+        // console.log("Result (sorted)", state.search.results);
     } catch (err) {
         console.log(err);
         throw err;

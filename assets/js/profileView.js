@@ -12,19 +12,7 @@ class ProfileView extends View {
         );
     }
 
-    // addHandlerRenderProfile(handler) {
-    //     window.addEventListener("load", handler);
-    //     window.addEventListener("click", function (e) {
-    //         const btn = e.target.closest(".nav__btn");
-    //         if (!btn) return;
-    //         // console.log(handler);
-    //         handler();
-    //     });
-    // }
-
     _generateMarkup() {
-        // console.log(this._data);
-
         return `
             <div class="profile">
                 <h1 class="profile__heading">Welcome to your profile</h1>
@@ -88,84 +76,3 @@ class ProfileView extends View {
 }
 
 export default new ProfileView();
-
-/*
-
-<nav class="nav">
-<ul class="nav__list">
-    <li class="nav__item">
-        <button class="nav__btn nav__btn--to_watch">
-            <!-- <span>To watch</span> -->
-            <img
-                class="nav__icon"
-                src="assets/img/pending.svg"
-                alt="Movies to watch"
-            />
-        </button>
-        <!-- <div class="bookmarks">
-        <ul class="bookmarks__list">
-            <div class="message">
-                <div>
-                <svg>
-                    <use href="src/img/icons.svg#icon-smile"></use>
-                </svg>
-                </div>
-                <p>
-                No bookmarks yet. Find a nice recipe and bookmark it :)
-                </p>
-            </div>
-        </ul>
-    </div> -->
-    </li>
-    <li class="nav__item">
-        <button class="nav__btn nav__btn--watching">
-            <!-- <span>Watching</span> -->
-            <img
-                class="nav__icon"
-                src="assets/img/in_progress.svg"
-                alt="Currently watching"
-            />
-        </button>
-        <!-- <div class="bookmarks">
-        <ul class="bookmarks__list">
-            <div class="message">
-                <div>
-                <svg>
-                    <use href="src/img/icons.svg#icon-smile"></use>
-                </svg>
-                </div>
-                <p>
-                No bookmarks yet. Find a nice recipe and bookmark it :)
-                </p>
-            </div>
-        </ul>
-    </div> -->
-    </li>
-    <li class="nav__item">
-        <button class="nav__btn nav__btn--watched">
-            <!-- <span>Watched</span> -->
-            <img
-                class="nav__icon"
-                src="assets/img/check.svg"
-                alt="Watched shows"
-            />
-        </button>
-        <!-- <div class="bookmarks">
-        <ul class="bookmarks__list">
-            <div class="message">
-                <div>
-                <svg>
-                    <use href="src/img/icons.svg#icon-smile"></use>
-                </svg>
-                </div>
-                <p>
-                No bookmarks yet. Find a nice recipe and bookmark it :)
-                </p>
-            </div>
-        </ul>
-    </div> -->
-    </li>
-</ul>
-</nav>
-
-*/
