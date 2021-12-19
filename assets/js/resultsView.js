@@ -12,7 +12,6 @@ class ResultsView extends View {
 
     _generateMarkupPreview(res) {
         const id = +window.location.hash.slice(1);
-        // console.log(res);
 
         return `
         <li class="preview ${res.id === id ? "preview--selected" : ""}">
@@ -21,8 +20,8 @@ class ResultsView extends View {
                     <img
                         class="preview__icon"
                         src="${
-                            res.image
-                                ? API_IMAGE_PATH + res.image
+                            res.poster_path
+                                ? API_IMAGE_PATH + res.poster_path
                                 : res.mediaType === "person"
                                 ? "assets/img/blank_profile.svg"
                                 : "assets/img/blank_poster.svg"
@@ -31,12 +30,12 @@ class ResultsView extends View {
                     />
                 </figure>
                 <div class="preview__data">
-                    <h4 class="title">${res.title}</h4>
+                    <h4 class="title">${res.title ? res.title : res.name}</h4>
                     <p class="release">${res.date}</p>
                 </div>
                 <div class="preview__score">
                     <p class="paragraf">score</p>
-                    <p class="score">${res.score}</p>
+                    <p class="score">${res.vote_average}</p>
                     <div class="star">
                     <img
                         class="star"

@@ -85,36 +85,14 @@ export const loadSearchResults = async function (query, state) {
                     return {
                         ...result,
                         composite_id: result.media_type + "/" + result.id,
+                        vote_average: result.vote_average
+                            ? result.vote_average
+                            : 0,
                     };
                 })
             );
         }
-        // console.log("Result: ", state.search.results);
-        // sort by popularity descending
-        // state.search.results.sort(
-        //     (showOne, showTwo) => showTwo.popularity - showOne.popularity
-        // );
-
-        //sort by name ascending
-        // state.search.results.sort((showOne, showTwo) => {
-        //     const showOneTitle = showOne.title
-        //         ? showOne.title.toLowerCase()
-        //         : showOne.name.toLowerCase();
-        //     const showTwoTitle = showTwo.title
-        //         ? showTwo.title.toLowerCase()
-        //         : showTwo.name.toLowerCase();
-
-        //     if (showOneTitle < showTwoTitle) return -1;
-        //     if (showOneTitle > showTwoTitle) return 1;
-        //     return 0;
-        // });
-
-        //sort by score descending
-        // state.search.results.sort(
-        //     (showOne, showTwo) => showTwo.vote_average - showOne.vote_average
-        // );
-
-        // console.log("Result (sorted)", state.search.results);
+        sortResults(state.search.results, (state.search.sorted = ""));
     } catch (err) {
         console.log(err);
         throw err;
@@ -126,8 +104,6 @@ export const getSearchResultsPage = function (page = state.search.page) {
 
     const start = (page - 1) * state.search.resultsPerPage;
     const end = page * state.search.resultsPerPage;
-
-    // console.log("get search res page");
 
     return state.search.results.slice(start, end);
 };
@@ -156,7 +132,7 @@ export const addBookmark = function (show, bookmarkStatus) {
     persistBookmarks();
 };
 
-export const deleteBookmark = function (composite_id, bookmarkStatus) {
+export const deleteBookmark = function (composite_id) {
     //Delete bookmark
 
     for (const arr in state.bookmarks) {
@@ -170,6 +146,57 @@ export const deleteBookmark = function (composite_id, bookmarkStatus) {
     //mark current show as NOT bookmarked
     if (composite_id === state.show.composite_id) state.show.bookmarked = "";
     persistBookmarks();
+};
+
+export const sortResults = function (results, sortedBy) {
+    switch (sortedBy) {
+        case "scoreDesc":
+            return results.sort(
+                (showOne, showTwo) =>
+                    showTwo.vote_average - showOne.vote_average
+            );
+        case "scoreAsc":
+            return results.sort(
+                (showOne, showTwo) =>
+                    showOne.vote_average - showTwo.vote_average
+            );
+        case "popularityAsc":
+            return results.sort(
+                (showOne, showTwo) => showOne.popularity - showTwo.popularity
+            );
+        case "popularityDesc":
+            return results.sort(
+                (showOne, showTwo) => showTwo.popularity - showOne.popularity
+            );
+        case "alphaAsc":
+            return results.sort((showOne, showTwo) => {
+                const showOneTitle = showOne.title
+                    ? showOne.title.toLowerCase()
+                    : showOne.name.toLowerCase();
+                const showTwoTitle = showTwo.title
+                    ? showTwo.title.toLowerCase()
+                    : showTwo.name.toLowerCase();
+
+                if (showOneTitle < showTwoTitle) return -1;
+                if (showOneTitle > showTwoTitle) return 1;
+                return 0;
+            });
+        case "alphaDesc":
+            return results.sort((showOne, showTwo) => {
+                const showOneTitle = showOne.title
+                    ? showOne.title.toLowerCase()
+                    : showOne.name.toLowerCase();
+                const showTwoTitle = showTwo.title
+                    ? showTwo.title.toLowerCase()
+                    : showTwo.name.toLowerCase();
+
+                if (showTwoTitle < showOneTitle) return -1;
+                if (showTwoTitle > showOneTitle) return 1;
+                return 0;
+            });
+        default:
+            return results;
+    }
 };
 
 const init = function () {

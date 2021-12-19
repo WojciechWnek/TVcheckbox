@@ -3,11 +3,11 @@ class SearchView {
     _errorMessage = "Try putting something in the input field.";
 
     getQuery() {
-        const query = this._parentElement.querySelector(".search__field").value;
-        this._clearInput();
-        if (query == "") throw this._errorMessage;
-        // const query = "";
-        // const query = "avatar the last airbender";
+        // const query = this._parentElement.querySelector(".search__field").value;
+        // this._clearInput();
+        // if (query == "") throw this._errorMessage;
+
+        const query = "shrek";
         return query.trim();
         // return query;
     }

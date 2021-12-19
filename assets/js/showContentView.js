@@ -16,7 +16,6 @@ class ShowContentView extends View {
             if (!btn) return;
 
             const bookmarkStatus = btn.dataset.bookmark;
-            // console.log(bookmarkStatus);
 
             handler(bookmarkStatus);
         });

@@ -72,4 +72,21 @@ export default class View {
         this._clear();
         this._parentElement.insertAdjacentHTML("afterbegin", markup);
     }
+
+    // renderMessage(message = this._errorMessage) {
+    //     const markup = `
+    //         <div class="error">
+    //             <div>
+    //                 <img
+    //                     class="error__icon"
+    //                     src="assets/img/error.svg"
+    //                     alt="Error"
+    //                 />
+    //             </div>
+    //             <p>${message}</p>
+    //         </div>
+    //     `;
+    //     this._clear();
+    //     this._parentElement.insertAdjacentHTML("afterbegin", markup);
+    // }
 }
