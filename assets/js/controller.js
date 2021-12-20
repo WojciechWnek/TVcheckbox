@@ -28,14 +28,16 @@ const controlShowContent = async function () {
     }
 };
 
-const controlSearchResults = async function () {
+const controlSearchResults = async function (oldQuery = "") {
     try {
         // resultsView.renderSpinner();
         // showContentView.render();
 
         let query = searchView.getQuery();
-        if (!query) query = model.state.search.query;
+        if (!query || (query !== oldQuery && oldQuery !== ""))
+            query = model.state.search.query;
         if (!query) return;
+
         resultsView.renderSpinner();
 
         await model.loadSearchResults(query, model.state);
@@ -91,11 +93,10 @@ const controlAddBookmark = async function (bookmarkStatus) {
 };
 
 const controlSort = function (sortBy) {
-    // try {
     model.state.search.page = 1;
     if (sortBy === model.state.search.sorted) {
         sortBy = "";
-        controlSearchResults();
+        controlSearchResults(model.state.search.query);
     }
 
     model.state.search.sorted = sortBy;
@@ -105,8 +106,6 @@ const controlSort = function (sortBy) {
     resultsView.render(model.getSearchResultsPage());
 
     paginationView.render(model.state.search);
-    // } catch {
-    // }
 };
 
 const controlPagination = function (goToPage) {
