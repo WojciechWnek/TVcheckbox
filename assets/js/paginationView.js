@@ -6,7 +6,7 @@ class PaginationView extends View {
 
     addHandlerClick(handler) {
         this._parentElement.addEventListener("click", function (e) {
-            const btn = e.target.closest(".btn--inline");
+            const btn = e.target.closest(".pagination__btn");
             if (!btn) return;
 
             const goToPage = +btn.dataset.goto;
@@ -20,13 +20,13 @@ class PaginationView extends View {
         const numPages = Math.ceil(
             this._data.results.length / this._data.resultsPerPage
         );
-        // console.log(numPages);
 
         if (curPage === 1 && numPages > 1) {
             return `
+            <span class="pagination--cur">${curPage}</span>
             <button data-goto="${
                 curPage + 1
-            }" class="btn--inline pagination__btn--prev">
+            }" class="btn pagination__btn pagination__btn--next">
                 <span>Page ${curPage + 1}</span>
                 <span>&#10095</span>
             </button>
@@ -37,10 +37,11 @@ class PaginationView extends View {
             return `
                 <button data-goto="${
                     curPage - 1
-                }" class="btn--inline pagination__btn--prev">
+                }" class="btn pagination__btn pagination__btn--prev">
                     <span>&#10094 </span>
                     <span>Page ${curPage - 1}</span>
                 </button>
+                <span class="pagination--cur">${curPage}</span>
             `;
         }
 
@@ -48,20 +49,23 @@ class PaginationView extends View {
             return `
                 <button data-goto="${
                     curPage - 1
-                }" class="btn--inline pagination__btn--prev">
+                }" class="btn pagination__btn pagination__btn--prev">
                     <span>&#10094 </span>
                     <span>Page ${curPage - 1}</span>
                 </button>
+                <span class="pagination--cur">${curPage}</span>
                 <button data-goto="${
                     curPage + 1
-                }" class="btn--inline pagination__btn--prev">
+                }" class="btn pagination__btn pagination__btn--next">
                     <span>Page ${curPage + 1}</span>
                     <span>&#10095</span>
                 </button>
             `;
         }
 
-        return "";
+        return `
+        <span class="pagination--cur">${curPage}</span>
+        `;
     }
 }
 

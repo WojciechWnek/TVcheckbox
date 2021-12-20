@@ -18,42 +18,58 @@ class SortView extends View {
     _generateMarkup() {
         return `
             <li>
-                <button class="btn--sort" data-sort="alphaAsc">
-                    <img
-                    src="assets/img/sort/alphaAsc.svg"
+                <button class="btn btn--sort" data-sort="alphaAsc">
+                    <img class="icon"
+                    src="assets/img/sort/${
+                        this._data.sorted === "alphaAsc"
+                            ? this._data.sorted + "--marked"
+                            : "alphaAsc"
+                    }.svg"
                     alt="Sort alphabetically ascending"
                     />
                 </button>
             </li>
             <li>
-                <button class="btn--sort" data-sort="alphaDesc">
-                    <img
-                    src="assets/img/sort/alphaDesc.svg"
+                <button class="btn btn--sort" data-sort="alphaDesc">
+                    <img class="icon"
+                    src="assets/img/sort/${
+                        this._data.sorted === "alphaDesc"
+                            ? this._data.sorted + "--marked"
+                            : "alphaDesc"
+                    }.svg"
                     alt="Sort alphabetically descending"
                     />
                 </button>
             </li>
 
             <li>
-                <button class="btn--sort" data-sort="popularityDesc">
-                    <img
-                    src="assets/img/sort/popularityDesc.svg"
+                <button class="btn btn--sort" data-sort="popularityDesc">
+                    <img class="icon"
+                    src="assets/img/sort/${
+                        this._data.sorted === "popularityDesc"
+                            ? this._data.sorted + "--marked"
+                            : "popularityDesc"
+                    }.svg"
                     alt="Sort by popularity descending"
                     />
                 </button>
             </li>
             <li>
-                <button class="btn--sort" data-sort="popularityAsc">
-                    <img
-                    src="assets/img/sort/popularityAsc.svg"
+                <button class="btn btn--sort" data-sort="popularityAsc">
+                    <img class="icon"
+                    src="assets/img/sort/${
+                        this._data.sorted === "popularityAsc"
+                            ? this._data.sorted + "--marked"
+                            : "popularityAsc"
+                    }.svg"
                     alt="Sort by popularity ascending"
                     />
                 </button>
             </li>
 
             <li>
-                <button class="btn--sort" data-sort="scoreDesc">
-                    <img
+                <button class="btn btn--sort" data-sort="scoreDesc">
+                    <img class="icon"
                     src="assets/img/sort/${
                         this._data.sorted === "scoreDesc"
                             ? this._data.sorted + "--marked"
@@ -64,9 +80,13 @@ class SortView extends View {
                 </button>
             </li>
             <li>
-                <button class="btn--sort" data-sort="scoreAsc">
-                    <img
-                    src="assets/img/sort/scoreAsc.svg"
+                <button class="btn btn--sort" data-sort="scoreAsc">
+                    <img class="icon"
+                    src="assets/img/sort/${
+                        this._data.sorted === "scoreAsc"
+                            ? this._data.sorted + "--marked"
+                            : "scoreAsc"
+                    }.svg"
                     alt="Sort by score ascending"
                     />
                 </button>
@@ -74,30 +94,6 @@ class SortView extends View {
             
         `;
     }
-
-    // scoreDesc(arr, byCriteria) {
-    //     return arr.sort(
-    //         (showOne, showTwo) => showTwo[byCriteria] - showOne[byCriteria]
-    //     );
-    // }
-
-    // scoreAsc(arr, byCriteria) {
-    //     return arr.sort(
-    //         (showOne, showTwo) => showOne[byCriteria] - showTwo[byCriteria]
-    //     );
-    // }
-
-    // popularityAsc(arr, byCriteria) {
-    //     return arr.sort(
-    //         (showOne, showTwo) => showOne[byCriteria] - showTwo[byCriteria]
-    //     );
-    // }
-
-    // popularityDesc(arr, byCriteria) {
-    //     return arr.sort(
-    //         (showOne, showTwo) => showTwo[byCriteria] - showOne[byCriteria]
-    //     );
-    // }
 }
 
 export default new SortView();

@@ -33,7 +33,8 @@ const controlSearchResults = async function () {
         // resultsView.renderSpinner();
         // showContentView.render();
 
-        const query = searchView.getQuery();
+        let query = searchView.getQuery();
+        if (!query) query = model.state.search.query;
         if (!query) return;
         resultsView.renderSpinner();
 
@@ -79,8 +80,8 @@ const controlAddBookmark = async function (bookmarkStatus) {
 
         showContentView.update(model.state.show);
 
+        if (!model.state.search.query) return;
         await model.loadSearchResults(model.state.search.query, model.state);
-
         resultsView.render(model.getSearchResultsPage());
 
         paginationView.render(model.state.search);
@@ -90,19 +91,22 @@ const controlAddBookmark = async function (bookmarkStatus) {
 };
 
 const controlSort = function (sortBy) {
+    // try {
     model.state.search.page = 1;
     if (sortBy === model.state.search.sorted) {
         sortBy = "";
         controlSearchResults();
     }
+
     model.state.search.sorted = sortBy;
     model.sortResults(model.state.search.results, sortBy);
 
     sortView.update(model.state.search);
-
     resultsView.render(model.getSearchResultsPage());
 
     paginationView.render(model.state.search);
+    // } catch {
+    // }
 };
 
 const controlPagination = function (goToPage) {

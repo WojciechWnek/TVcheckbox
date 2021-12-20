@@ -18,7 +18,7 @@ class ResultsView extends View {
             <a class="preview__link" href="#${res.media_type}/${res.id}">
                 <figure class="preview__fig">
                     <img
-                        class="preview__icon"
+                        class="icon"
                         src="${
                             res.poster_path
                                 ? API_IMAGE_PATH + res.poster_path
@@ -30,7 +30,9 @@ class ResultsView extends View {
                     />
                 </figure>
                 <div class="preview__data">
-                    <h4 class="title">${res.title ? res.title : res.name}</h4>
+                    <h4 class="title" title="${
+                        res.title ? res.title : res.name
+                    }">${res.title ? res.title : res.name}</h4>
                     <p class="release">${res.date}</p>
                 </div>
                 <div class="preview__score">
@@ -38,22 +40,22 @@ class ResultsView extends View {
                     <p class="score">${res.vote_average}</p>
                     <div class="star">
                     <img
-                        class="star"
+                        class="icon"
                         src="assets/img/star.svg"
                         alt="Star"
                     />
                     </div>
                 </div>
-            </a>
-            <div>
+                <div class="preview__state">
                 <img
-                    class="preview__state"
+                    class="icon"
                     src="assets/img/${
                         res.bookmarked ? res.bookmarked + "--marked" : "empty"
                     }.svg"
                     alt="Star"
                 />
-            </div>
+                </div>
+            </a>
         </li>
         `;
     }

@@ -23,6 +23,7 @@ $orange: #fca311;
 
 html {
     box-sizing: border-box;
+    font-size: 62.5%;
 }
 
 body {
@@ -38,7 +39,7 @@ body {
 .container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 100px 1fr;
+    grid-template-rows: auto 1fr;
 
     background-color: $dark_blue;
     margin: 4vw auto;

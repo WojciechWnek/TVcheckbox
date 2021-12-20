@@ -92,7 +92,8 @@ export const loadSearchResults = async function (query, state) {
                 })
             );
         }
-        sortResults(state.search.results, (state.search.sorted = ""));
+
+        sortResults(state.search.results, state.search.sorted);
     } catch (err) {
         console.log(err);
         throw err;
