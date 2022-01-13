@@ -11,10 +11,12 @@ class ResultsView extends View {
     }
 
     _generateMarkupPreview(res) {
-        const id = +window.location.hash.slice(1);
+        const id = window.location.hash.slice(1);
 
         return `
-        <li class="preview ${res.id === id ? "preview--selected" : ""}">
+        <li class="preview ${
+            res.composite_id === id ? "preview--selected" : ""
+        }">
             <a class="preview__link" href="#${res.media_type}/${res.id}">
                 <figure class="preview__fig">
                     <img
@@ -22,7 +24,9 @@ class ResultsView extends View {
                         src="${
                             res.poster_path
                                 ? API_IMAGE_PATH + res.poster_path
-                                : res.mediaType === "person"
+                                : res.profile_path
+                                ? API_IMAGE_PATH + res.profile_path
+                                : res.media_type === "person"
                                 ? "assets/img/blank_profile.svg"
                                 : "assets/img/blank_poster.svg"
                         }"
@@ -33,9 +37,19 @@ class ResultsView extends View {
                     <h4 class="title" title="${
                         res.title ? res.title : res.name
                     }">${res.title ? res.title : res.name}</h4>
-                    <p class="release">${res.date}</p>
+                    <p class="release ${
+                        res.media_type === "person" ? "hide" : ""
+                    }">${
+            res.release_date
+                ? res.release_date
+                : res.first_air_date
+                ? res.first_air_date
+                : ""
+        }</p>
                 </div>
-                <div class="preview__score">
+                <div class="preview__score ${
+                    res.media_type === "person" ? "hide" : ""
+                }">
                     <p class="paragraf">score</p>
                     <p class="score">${res.vote_average}</p>
                     <div class="star">
@@ -54,6 +68,9 @@ class ResultsView extends View {
                     }.svg"
                     alt="Star"
                 />
+                </div>
+                <div class="preview__type">
+                    <p class="type">${res.media_type}</p>
                 </div>
             </a>
         </li>

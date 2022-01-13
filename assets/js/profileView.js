@@ -17,7 +17,17 @@ class ProfileView extends View {
             <div class="profile">
                 <h1 class="profile__heading">Welcome to your profile</h1>
                 <div class="profile__time">
-                    <p>Aprox time spent watching</p>
+                    ${
+                        this._data.watched.length >= 0
+                            ? `
+                                <div class="timer">
+                                    <p class="message">Aprox time spent watching</p>
+                                    <div class="timer__counter">
+                                        ${this._countTime()}
+                                    </div>
+                                </div>`
+                            : ""
+                    }
                 </div>
                 <div class="profile__shows">
                     ${
@@ -71,6 +81,43 @@ class ProfileView extends View {
             <li class="show">
                 <img class="show__image"src="${API_IMAGE_PATH}${res.poster_path}" alt="${res.title}">
             </li>
+        `;
+    }
+
+    _countTime() {
+        let time = 0;
+        this._data.watched.forEach((show) => {
+            time += show.runtime ? show.runtime : 0;
+        });
+        return `
+            <div class="months">
+                ${Math.floor(time / 60 / 24 / 30)}
+                <span>
+                    ${
+                        Math.floor(time / 60 / 24 / 30) === 1
+                            ? "month"
+                            : "months"
+                    }
+                </span>
+            </div>
+            <div class="days">
+                ${Math.floor(time / 60 / 24) % 30}
+                <span>
+                    ${Math.floor(time / 60 / 24) % 30 === 1 ? "day" : "days"}
+                </span>
+            </div>
+            <div class="hours">
+                ${Math.floor(time / 60) % 24}
+                <span>
+                    ${Math.floor(time / 60) % 24 === 1 ? "hour" : "hours"}
+                </span>
+            </div>
+            <div class="minutes">
+                ${Math.floor(time) % 60}
+                <span>
+                    ${Math.floor(time) % 60 === 1 ? "minute" : "minutes"}
+                </span>
+            </div>
         `;
     }
 }

@@ -43,11 +43,12 @@ body {
 
     background-color: $dark_blue;
     margin: 4vw auto;
-    border-radius: 9px;
+    border-radius: 1rem;
     overflow: hidden;
     box-shadow: 0 0.5rem 10rem 0.5rem rgba($platinum, 0.2);
 
-    width: 1200px;
-    height: fit-content;
+    width: 80%;
+    max-width: 2000px;
+    min-width: 1200px;
     min-height: 1000px;
 }

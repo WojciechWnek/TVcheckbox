@@ -12,6 +12,17 @@
         &__time {
             padding-bottom: 1rem;
             text-align: center;
+
+            .timer {
+                display: flex;
+                flex-direction: column;
+
+                &__counter {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                }
+            }
         }
 
         &__shows {

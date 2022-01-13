@@ -200,6 +200,14 @@ export const sortResults = function (results, sortedBy) {
     }
 };
 
+// export const countTime = function () {
+//     let time = 0;
+//     state.bookmarks.watched.forEach((show) => {
+//         time += show.runtime ? show.runtime : 0;
+//     });
+//     return time;
+// };
+
 const init = function () {
     const storage = localStorage.getItem("bookmarks");
     if (storage) state.bookmarks = JSON.parse(storage);
