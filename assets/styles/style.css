@@ -523,6 +523,7 @@ body {
   -ms-grid-row: 1;
   -ms-grid-row-span: 2;
   grid-row: 1/3;
+  background-color: #ffffff;
 }
 
 .content__note {
@@ -564,6 +565,17 @@ body {
   grid-column: 2;
   text-align: justify;
   font-size: 1.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.content__overview .paragraph {
+  margin-bottom: 0.5rem;
 }
 
 .content__bookmarks {
@@ -599,6 +611,37 @@ body {
 .content__seasons {
   height: 1000px;
   grid-column: 1/-1;
+}
+
+.content__personalInfo {
+  -ms-grid-column: 3;
+  grid-column: 3;
+  grid-row: 1/-1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.content__personalInfo .title {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
+.content__personalInfo .info {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-weight: bold;
+}
+
+.content__personalInfo .value {
+  margin-left: 1rem;
+  display: block;
+  font-style: italic;
+  font-weight: normal;
 }
 
 .seasons {
