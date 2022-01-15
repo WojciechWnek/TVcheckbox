@@ -1,0 +1,27 @@
+.footer {
+    grid-column: 2/-1;
+    grid-row: 3;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    color: $white;
+
+    &__info {
+        font-size: 2rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    &__link {
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        align-items: center;
+    }
+
+    &__icon {
+        width: 4rem;
+        margin-left: 1rem;
+    }
+}

@@ -18,7 +18,6 @@ const controlShowContent = async function () {
 
         //1 load data
         await model.loadShow(composite_id);
-        // const show = model.state.show;
 
         //2 render data
 
@@ -30,9 +29,6 @@ const controlShowContent = async function () {
 
 const controlSearchResults = async function (oldQuery = "") {
     try {
-        // resultsView.renderSpinner();
-        // showContentView.render();
-
         let query = searchView.getQuery();
         if (!query || (query !== oldQuery && oldQuery !== ""))
             query = model.state.search.query;

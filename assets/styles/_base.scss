@@ -39,7 +39,7 @@ body {
 .container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto 1fr;
+    grid-template-rows: auto 1fr 10rem;
 
     background-color: $dark_blue;
     margin: 4vw auto;

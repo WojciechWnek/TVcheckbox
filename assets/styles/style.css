@@ -37,8 +37,8 @@ body {
   display: grid;
   -ms-grid-columns: (1fr)[3];
       grid-template-columns: repeat(3, 1fr);
-  -ms-grid-rows: auto 1fr;
-      grid-template-rows: auto 1fr;
+  -ms-grid-rows: auto 1fr 10rem;
+      grid-template-rows: auto 1fr 10rem;
   background-color: #14213d;
   margin: 4vw auto;
   border-radius: 1rem;
@@ -126,7 +126,7 @@ body {
       -ms-flex-align: center;
           align-items: center;
   margin: 5rem auto;
-  font-size: 1.6rem;
+  font-size: 2rem;
 }
 
 .error__icon {
@@ -136,7 +136,7 @@ body {
 
 .message {
   text-align: center;
-  font-size: 1.6rem;
+  font-size: 2rem;
 }
 
 .btn {
@@ -219,6 +219,7 @@ body {
   border: none;
   color: #14213d;
   font-size: 1.6rem;
+  width: 40rem;
 }
 
 .search__field:focus {
@@ -258,14 +259,13 @@ body {
 }
 
 .results {
-  -ms-grid-row: 2;
-  grid-row: 2;
+  grid-row: 2/-1;
   -ms-grid-column: 1;
   grid-column: 1;
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: 70px auto 100px;
-      grid-template-rows: 70px auto 100px;
+  -ms-grid-rows: 7rem auto 10rem;
+      grid-template-rows: 7rem auto 10rem;
   border-radius: 1rem;
   background-color: #ffffff;
 }
@@ -783,5 +783,50 @@ body {
 .content .profile__shows .status__list .show__image {
   width: 100%;
   height: 100%;
+}
+
+.footer {
+  grid-column: 2/-1;
+  -ms-grid-row: 3;
+  grid-row: 3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-item-align: center;
+      align-self: center;
+  color: #ffffff;
+}
+
+.footer__info {
+  font-size: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.footer__link {
+  text-decoration: none;
+  color: inherit;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.footer__icon {
+  width: 4rem;
+  margin-left: 1rem;
 }
 /*# sourceMappingURL=style.css.map */

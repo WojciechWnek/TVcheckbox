@@ -1,8 +1,8 @@
 .results {
-    grid-row: 2;
+    grid-row: 2/-1;
     grid-column: 1;
     display: grid;
-    grid-template-rows: 70px auto 100px;
+    grid-template-rows: 7rem auto 10rem;
     border-radius: 1rem;
 
     background-color: $white;

@@ -60,7 +60,9 @@ class ResultsView extends View {
                     />
                     </div>
                 </div>
-                <div class="preview__state">
+                <div class="preview__state ${
+                    res.media_type === "person" ? "hide" : ""
+                }">
                 <img
                     class="icon"
                     src="assets/img/${

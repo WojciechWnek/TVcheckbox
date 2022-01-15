@@ -24,7 +24,6 @@
     background-color: $white;
     padding-left: 3.2rem;
     border-radius: 3.2rem;
-    // width: 50rem;
 
     &:focus-within {
         transition: 0.1s;
@@ -37,6 +36,7 @@
         border: none;
         color: $dark_blue;
         font-size: 1.6rem;
+        width: 40rem;
 
         &:focus {
             outline: none;
