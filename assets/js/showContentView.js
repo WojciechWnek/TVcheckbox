@@ -50,28 +50,7 @@ class ShowContentView extends View {
         </div>
 
         <div class="content__bookmarks">
-
-            <button class="btn btn--bookmark" data-bookmark="toWatch">
-                <img class="icon" src="assets/img/${
-                    this._data.bookmarked === "toWatch"
-                        ? this._data.bookmarked + "--marked"
-                        : "toWatch"
-                }.svg" alt="bookmark">
-            </button>
-            <button class="btn btn--bookmark" data-bookmark="watching">
-            <img class="icon" src="assets/img/${
-                this._data.bookmarked === "watching"
-                    ? this._data.bookmarked + "--marked"
-                    : "watching"
-            }.svg" alt="bookmark">
-            </button>
-            <button class="btn btn--bookmark" data-bookmark="watched">
-            <img class="icon" src="assets/img/${
-                this._data.bookmarked === "watched"
-                    ? this._data.bookmarked + "--marked"
-                    : "watched"
-            }.svg" alt="bookmark">
-            </button>
+            ${this._showBookmarksButtons()}
         </div>
             
         <div class="content__overview">
@@ -120,28 +99,7 @@ class ShowContentView extends View {
             </div>
 
             <div class="content__bookmarks">
-
-                <button class="btn btn--bookmark" data-bookmark="toWatch">
-                    <img class="icon" src="assets/img/${
-                        this._data.bookmarked === "toWatch"
-                            ? this._data.bookmarked + "--marked"
-                            : "toWatch"
-                    }.svg" alt="bookmark">
-                </button>
-                <button class="btn btn--bookmark" data-bookmark="watching">
-                <img class="icon" src="assets/img/${
-                    this._data.bookmarked === "watching"
-                        ? this._data.bookmarked + "--marked"
-                        : "watching"
-                }.svg" alt="bookmark">
-                </button>
-                <button class="btn btn--bookmark" data-bookmark="watched">
-                <img class="icon" src="assets/img/${
-                    this._data.bookmarked === "watched"
-                        ? this._data.bookmarked + "--marked"
-                        : "watched"
-                }.svg" alt="bookmark">
-                </button>
+                ${this._showBookmarksButtons()}
             </div>
                 
             <div class="content__overview">
@@ -222,6 +180,41 @@ class ShowContentView extends View {
             </div>
         `;
         }
+    }
+
+    _showBookmarksButtons() {
+        return `
+        <button class="btn btn--bookmark tooltip" data-bookmark="toWatch">
+            <img class="icon" src="assets/img/${
+                this._data.bookmarked === "toWatch"
+                    ? this._data.bookmarked + "--marked"
+                    : "toWatch"
+            }.svg" alt="bookmark">
+            <span class="tooltiptext tooltiptext--bookmarks">
+                Bookmark show as <b>to watch</b>
+            </span>
+        </button>
+        <button class="btn btn--bookmark tooltip" data-bookmark="watching">
+            <img class="icon" src="assets/img/${
+                this._data.bookmarked === "watching"
+                    ? this._data.bookmarked + "--marked"
+                    : "watching"
+            }.svg" alt="bookmark">
+            <span class="tooltiptext tooltiptext--bookmarks">
+                Bookmark show as still <b>watching</b>
+            </span>
+        </button>
+        <button class="btn btn--bookmark tooltip" data-bookmark="watched">
+            <img class="icon" src="assets/img/${
+                this._data.bookmarked === "watched"
+                    ? this._data.bookmarked + "--marked"
+                    : "watched"
+            }.svg" alt="bookmark">
+            <span class="tooltiptext tooltiptext--bookmarks">
+                Bookmark show as <b>watched</b>
+            </span>
+        </button>
+        `;
     }
 
     _showGenres() {

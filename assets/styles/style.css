@@ -210,6 +210,25 @@ body {
   border-color: #e5e5e5 transparent transparent transparent;
 }
 
+.tooltip .tooltiptext--bookmarks {
+  font-size: 1.5rem;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  padding: 1rem;
+  font-weight: normal;
+  top: 135%;
+  bottom: auto;
+  max-width: 10rem;
+  margin-left: -45px;
+}
+
+.tooltip .tooltiptext--bookmarks::after {
+  bottom: 99%;
+  top: auto;
+  border-color: transparent transparent #e5e5e5 transparent;
+}
+
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }

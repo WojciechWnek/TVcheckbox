@@ -118,6 +118,23 @@
             border-style: solid;
             border-color: $platinum transparent transparent transparent;
         }
+
+        &--bookmarks {
+            font-size: 1.5rem;
+            width: max-content;
+            padding: 1rem;
+            font-weight: normal;
+            top: 135%;
+            bottom: auto;
+            max-width: 10rem;
+            margin-left: -45px;
+
+            &::after {
+                bottom: 99%;
+                top: auto;
+                border-color: transparent transparent $platinum transparent;
+            }
+        }
     }
 
     &:hover {
