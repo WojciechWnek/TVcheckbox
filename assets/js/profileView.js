@@ -15,17 +15,17 @@ class ProfileView extends View {
     _generateMarkup() {
         return `
             <div class="profile">
-                <h1 class="profile__heading">Welcome to your profile</h1>
-                <div class="profile__time">
+                <h1 class="profile__heading">All of Your bookmarked shows are listed below</h1>
+                <div class="profile__timer">
                     ${
                         this._data.watched.length >= 0
                             ? `
-                                <div class="timer">
-                                    <p class="message">Aprox time spent watching</p>
-                                    <div class="timer__counter">
-                                        ${this._countTime()}
-                                    </div>
-                                </div>`
+                                
+                                <p class="profile__timer__message">Time spent watching</p>
+                                <div class="profile__timer__counter">
+                                    ${this._countTime()}
+                                </div>
+                                `
                             : ""
                     }
                 </div>
@@ -33,11 +33,11 @@ class ProfileView extends View {
                     ${
                         this._data.toWatch.length > 0
                             ? `
-                                <div class="status">
+                                <div class="profile__shows__container">
                                     <h4>To watch</h4>
-                                    <ul class="status__list">
+                                    <ul class="profile__shows__list">
                                         ${this._data.toWatch
-                                            .map(this._generateMarkupProfile)
+                                            .map(this._getBookmarkedShows)
                                             .join("")}
                                     </ul>
                                 </div>`
@@ -46,11 +46,11 @@ class ProfileView extends View {
                     ${
                         this._data.watching.length > 0
                             ? `
-                                <div class="status">
+                                <div class="profile__shows__container">
                                     <h4>Watching</h4>
-                                    <ul class="status__list">
+                                    <ul class="profile__shows__list">
                                         ${this._data.watching
-                                            .map(this._generateMarkupProfile)
+                                            .map(this._getBookmarkedShows)
                                             .join("")}
                                     </ul>
                                 </div>`
@@ -59,27 +59,46 @@ class ProfileView extends View {
                     ${
                         this._data.watched.length > 0
                             ? `
-                                <div class="status">
+                                <div class="profile__shows__container">
                                     <h4>Watched</h4>
-                                    <ul class="status__list">
+                                    <ul class="profile__shows__list">
                                         ${this._data.watched
-                                            .map(this._generateMarkupProfile)
+                                            .map(this._getBookmarkedShows)
                                             .join("")}
                                     </ul>
                                 </div>`
                             : ""
-                    }                   
+                    }              
                 </div>
             </div>
         `;
     }
 
-    _generateMarkupProfile(res) {
-        // console.log("profile", res);
-
+    _getBookmarkedShows(res) {
         return `  
-            <li class="show">
-                <img class="show__image"src="${API_IMAGE_PATH}${res.poster_path}" alt="${res.title}">
+            <li class="show tooltip">
+                <a class="show__link" href="#${res.media_type}/${res.id}">
+                    <img class="show__image icon" src="${
+                        res.poster_path
+                            ? API_IMAGE_PATH + res.poster_path
+                            : "assets/img/blank_poster.svg"
+                    }" alt="${
+            res.title
+                ? "Poster of " + res.title
+                : res.name
+                ? "Poster of " + res.name
+                : "Show poster"
+        }">
+                </a>
+                <span class="tooltiptext">
+                    ${
+                        res.title
+                            ? res.title
+                            : res.name
+                            ? res.name
+                            : "Show poster"
+                    }
+                </span>
             </li>
         `;
     }

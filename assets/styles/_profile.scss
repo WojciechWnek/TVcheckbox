@@ -3,27 +3,44 @@
         grid-row: 1/-2;
         grid-column: 1/-1;
         font-size: 2rem;
-        // padding: 50px;
-        // height: 100%;
-        // width: 100%;
+        display: grid;
+        align-items: center;
 
         &__heading {
-            padding-bottom: 1rem;
+            margin-top: 2rem;
+            padding-bottom: 2rem;
             text-align: center;
         }
 
-        &__time {
-            padding-bottom: 1rem;
+        &__timer {
+            justify-self: center;
+            border-radius: 1rem;
+            background-color: $white;
+            color: $dark_blue;
+            width: 50rem;
+            padding: 2rem;
             text-align: center;
+            box-shadow: 0 0 5rem rgba($black, 0.2);
 
-            .timer {
+            &__message {
+                font-size: 3rem;
+                padding-bottom: 1.5rem;
+            }
+
+            &__counter {
                 display: flex;
-                flex-direction: column;
+                justify-content: space-around;
 
-                &__counter {
+                .months,
+                .hours,
+                .days,
+                .minutes {
+                    background-color: $platinum;
+                    padding: 1rem;
+                    border-radius: 1rem;
+                    width: 9rem;
                     display: flex;
-                    flex-direction: row;
-                    justify-content: space-between;
+                    flex-direction: column;
                 }
             }
         }
@@ -32,27 +49,28 @@
             display: grid;
             grid-template-rows: repeat(3, min-content);
 
-            .status {
+            &__container {
                 display: flex;
                 flex-direction: column;
-
-                &__list {
-                    display: flex;
-                    flex-direction: row;
-                    flex-wrap: wrap;
-
-                    .show {
-                        width: 100px;
-                        height: 150px;
-                        list-style: none;
-
-                        &__image {
-                            width: 100%;
-                            height: 100%;
-                        }
-                    }
-                }
             }
+            &__list {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+        }
+    }
+
+    .show {
+        width: 15rem;
+        list-style: none;
+        margin: 1rem;
+        border-radius: 1rem;
+
+        &__image {
+            border-radius: 1rem;
+            object-fit: cover;
+            background-color: $white;
         }
     }
 }

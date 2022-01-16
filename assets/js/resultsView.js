@@ -33,10 +33,23 @@ class ResultsView extends View {
                         alt="${res.title}"
                     />
                 </figure>
-                <div class="preview__data">
-                    <h4 class="title" title="${
-                        res.title ? res.title : res.name
-                    }">${res.title ? res.title : res.name}</h4>
+                <div class="preview__data ">
+                    <div class="tooltip">
+                        <h4 class="title" title="${
+                            res.title ? res.title : res.name
+                        }">${res.title ? res.title : res.name}
+                        
+                        </h4>
+                        <span class="tooltiptext tooltiptext--results">
+                        ${
+                            res.title
+                                ? res.title
+                                : res.name
+                                ? res.name
+                                : "Show poster"
+                        }
+                        </span>
+                    </div>
                     <p class="release ${
                         res.media_type === "person" ? "hide" : ""
                     }">${
