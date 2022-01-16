@@ -87,7 +87,13 @@ class ProfileView extends View {
     _countTime() {
         let time = 0;
         this._data.watched.forEach((show) => {
-            time += show.runtime ? show.runtime : 0;
+            if (show.runtime) {
+                time += show.runtime;
+            } else if (show.episode_run_time && show.number_of_episodes) {
+                time += show.episode_run_time * show.number_of_episodes;
+            } else {
+                time += 0;
+            }
         });
         return `
             <div class="months">

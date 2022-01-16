@@ -706,9 +706,9 @@ body {
 }
 
 .content .profile {
-  padding: 50px;
-  height: 100%;
-  width: 100%;
+  grid-row: 1/-2;
+  grid-column: 1/-1;
+  font-size: 2rem;
 }
 
 .content .profile__heading {
@@ -797,7 +797,7 @@ body {
           justify-content: center;
   -ms-flex-item-align: center;
       align-self: center;
-  color: #ffffff;
+  color: #e5e5e5;
 }
 
 .footer__info {
