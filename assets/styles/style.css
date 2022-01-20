@@ -197,6 +197,8 @@ body {
   width: max-content;
   max-width: 30rem;
   padding: 1rem;
+  z-index: 2;
+  margin-left: -3rem;
 }
 
 .tooltip .tooltiptext::after {
@@ -848,6 +850,7 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  margin: 2rem 0;
 }
 
 .content .profile__shows__list {
@@ -860,6 +863,26 @@ body {
           flex-direction: row;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+}
+
+.content .profile__shows__section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.content .profile__shows__section .icon {
+  height: 5rem;
+  width: 5rem;
+  margin: 1rem;
+}
+
+.content .profile__shows__bookmark {
+  font-size: 3rem;
+  margin-left: 1rem;
 }
 
 .content .show {
@@ -883,11 +906,18 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -ms-flex-item-align: center;
       align-self: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   color: #e5e5e5;
 }
 
@@ -903,6 +933,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin: 0.2rem 0;
 }
 
 .footer__link {
@@ -919,5 +950,15 @@ body {
 .footer__icon {
   width: 4rem;
   margin-left: 1rem;
+}
+
+.footer__tmdb {
+  width: 20rem;
+  margin-left: 1rem;
+}
+
+.footer__tmdb:hover {
+  -webkit-transform: scale(1.04);
+          transform: scale(1.04);
 }
 /*# sourceMappingURL=style.css.map */

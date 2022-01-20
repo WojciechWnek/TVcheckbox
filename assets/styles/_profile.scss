@@ -52,11 +52,27 @@
             &__container {
                 display: flex;
                 flex-direction: column;
+                margin: 2rem 0;
             }
             &__list {
                 display: flex;
                 flex-direction: row;
                 flex-wrap: wrap;
+            }
+            &__section {
+                display: flex;
+                align-items: center;
+
+                .icon {
+                    height: 5rem;
+                    width: 5rem;
+                    margin: 1rem;
+                }
+            }
+
+            &__bookmark {
+                font-size: 3rem;
+                margin-left: 1rem;
             }
         }
     }

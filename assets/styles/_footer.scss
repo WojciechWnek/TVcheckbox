@@ -2,8 +2,10 @@
     grid-column: 2/-1;
     grid-row: 3;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-self: center;
+    align-items: center;
     color: $platinum;
 
     &__info {
@@ -11,6 +13,7 @@
         display: flex;
         flex-direction: row;
         align-items: center;
+        margin: 0.2rem 0;
     }
 
     &__link {
@@ -23,5 +26,14 @@
     &__icon {
         width: 4rem;
         margin-left: 1rem;
+    }
+
+    &__tmdb {
+        width: 20rem;
+        margin-left: 1rem;
+
+        &:hover {
+            transform: scale(1.04);
+        }
     }
 }

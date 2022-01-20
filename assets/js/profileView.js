@@ -34,7 +34,10 @@ class ProfileView extends View {
                         this._data.toWatch.length > 0
                             ? `
                                 <div class="profile__shows__container">
-                                    <h4>To watch</h4>
+                                    <div class="profile__shows__section">
+                                        <img class="icon" src="assets/img/toWatch.svg">
+                                        <h4 class="profile__shows__bookmark">To watch</h4>
+                                    </div>
                                     <ul class="profile__shows__list">
                                         ${this._data.toWatch
                                             .map(this._getBookmarkedShows)
@@ -47,7 +50,10 @@ class ProfileView extends View {
                         this._data.watching.length > 0
                             ? `
                                 <div class="profile__shows__container">
-                                    <h4>Watching</h4>
+                                    <div class="profile__shows__section">
+                                        <img class="icon" src="assets/img/watching.svg">
+                                        <h4 class="profile__shows__bookmark">Watching</h4>
+                                    </div>
                                     <ul class="profile__shows__list">
                                         ${this._data.watching
                                             .map(this._getBookmarkedShows)
@@ -60,7 +66,10 @@ class ProfileView extends View {
                         this._data.watched.length > 0
                             ? `
                                 <div class="profile__shows__container">
-                                    <h4>Watched</h4>
+                                    <div class="profile__shows__section">
+                                        <img class="icon" src="assets/img/watched.svg">
+                                        <h4 class="profile__shows__bookmark">Watched</h4>
+                                    </div>
                                     <ul class="profile__shows__list">
                                         ${this._data.watched
                                             .map(this._getBookmarkedShows)
@@ -76,7 +85,7 @@ class ProfileView extends View {
 
     _getBookmarkedShows(res) {
         return `  
-            <li class="show tooltip">
+            <li class="show tooltip btn">
                 <a class="show__link" href="#${res.media_type}/${res.id}">
                     <img class="show__image icon" src="${
                         res.poster_path
