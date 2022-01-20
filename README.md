@@ -22,6 +22,8 @@ Application lets user search for a certain tv show and display its data. Next it
 
 After being marked, the show can be found in a profile section, which serves as an overview of a user's movie library.
 
+Data about the bookmarked shows is stored in a local storage of a browser.
+
 ## Technologies
 
 The project was written using [Vanilla JavaScript](https://developer.mozilla.org/pl/docs/Web/JavaScript) with [ES6](https://262.ecma-international.org/6.0/) specification. It uses [RESTful API](https://restfulapi.net/) and asynchronous JavaScript [(async/await)](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await) to get data from external source.
