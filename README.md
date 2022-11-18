@@ -5,4 +5,4 @@ Project wrote in Vanilla JavaScript.
 
 ## Documentation
 
-To see documentation navigate to [this link](https://scribehow.com/shared/Netlify_Workflow__k6d0N8JVQZ6uENRqgxfQPQ) or see [this file (pdf)](TVcheckbox.pdf)
+To see documentation navigate to [this link](https://scribehow.com/shared/Netlify_Workflow__k6d0N8JVQZ6uENRqgxfQPQ) or see <a href="TVcheckbox.pdf" download>this file (pdf)</a>.
