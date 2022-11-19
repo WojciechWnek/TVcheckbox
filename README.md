@@ -10,4 +10,4 @@ Project wrote in Vanilla JavaScript.
 
 ## Documentation
 
-To see aplication's main functions navigate to [this link](https://scribehow.com/shared/TV_checkbox_features__k6d0N8JVQZ6uENRqgxfQPQ) or see <a href="TVcheckbox.pdf" download>this file (pdf)</a>.
+To see aplication's main functions navigate to [this link](https://scribehow.com/shared/TV_checkbox_features__k6d0N8JVQZ6uENRqgxfQPQ) or see [this file (pdf)](./TVcheckbox.pdf).
